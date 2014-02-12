@@ -8,34 +8,17 @@
  * @link     https://github.com/webdevstudios/Custom-Metaboxes-and-Fields-for-WordPress
  */
 
-add_filter( 'cmb_meta_boxes', 'krank_metaboxes' );
+add_filter( 'cmb_meta_boxes', 'cmb_sample_metaboxes' );
 /**
  * Define the metabox and field configurations.
  *
  * @param  array $meta_boxes
  * @return array
  */
-function krank_metaboxes( array $meta_boxes ) {
+function cmb_sample_metaboxes( array $meta_boxes ) {
 
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_krank_';
-	
-	$meta_boxes['page_layout'] = array(
-		'id'         => 'page_layout',
-		'title'      => 'Page Layout Options',
-		'pages'      => array( 'page', ), // Post type
-		'context'    => 'side',
-		'priority'   => 'low',
-		'show_names' => true, // Show field names on the left
-		'fields'     => array(
-			array(
-				'name' => 'Remove Container',
-				'desc' => 'Remove Bootstrap container class from page.',
-				'id'   => $prefix . 'container',
-				'type' => 'checkbox',
-			),
-		),
-	);
+	$prefix = '_cmb_';
 
 	$meta_boxes['test_metabox'] = array(
 		'id'         => 'test_metabox',
@@ -341,6 +324,26 @@ function krank_metaboxes( array $meta_boxes ) {
 		)
 	);
 
+	/**
+	 * Metabox for an options page
+	 */
+	$meta_boxes['options_page'] = array(
+		'id'            => 'options_page',
+		'title'         => __( 'Theme Options Metabox', 'cmb' ),
+		'show_on'    => array( 'key' => 'options-page', 'value' => array( $prefix . 'theme_options', ), ),
+		'fields'        => array(
+			array(
+				'name'    => __( 'Site Background Color', 'cmb' ),
+				'desc'    => __( 'field description (optional)', 'cmb' ),
+				'id'      => $prefix . 'bg_color',
+				'type'    => 'colorpicker',
+				'default' => '#ffffff'
+			),
+		)
+	);
+
+	// Add other metaboxes as needed
+
 	return $meta_boxes;
 }
 
@@ -351,6 +354,6 @@ add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
 function cmb_initialize_cmb_meta_boxes() {
 
 	if ( ! class_exists( 'cmb_Meta_Box' ) )
-		require_once locate_template('/metaboxes/init.php');
+		require_once 'init.php';
 
 }
