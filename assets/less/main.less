@@ -4,16 +4,10 @@
 */
 
 // ==========================================================================
-//    Krank Imports
-// ========================================================================== 
-
-@import "krank/krank-variables.less"; // Krank Variables and Bootstrap Overwrides
-@import "krank/font-awesome.less"; // Font Awesome Icon Family
-
-// ==========================================================================
 //    Bootstrap
 // ========================================================================== 
 
+@import "krank/krank-variables.less"; // Krank Variables and Bootstrap Overwrides
 @import "bootstrap/mixins.less";
 
 // Reset
@@ -63,10 +57,48 @@
 @import "bootstrap/responsive-utilities.less";
 
 // ==========================================================================
+//    Krank Imports
+// ========================================================================== 
+
+@import "krank/font-awesome.less"; // Font Awesome Icon Family
+
+// ==========================================================================
 //    Base
 // ========================================================================== 
 
-body { }
+body {
+}
+	
+// Button and link transitions
+a, button, .btn {
+	-webkit-transition: color @trans, background-color @trans, background @trans;
+	-moz-transition: color @trans, background-color @trans, background @trans;
+	-ms-transition: color @trans, background-color @trans, background @trans;
+	transition: color @trans, background-color @trans, background @trans;
+	&:hover {
+		text-decoration: none;
+	}
+}
+.btn {
+	text-shadow: none !important;
+}
+
+// text selection color change
+::selection {
+	background: lighten(@brand-primary,5%);
+	color: #fff;
+	text-shadow: none;
+	}
+::-moz-selection {
+	background: lighten(@brand-primary,5%);
+	color: #fff;
+	text-shadow: none;
+}
+
+// Sprite and retina compatibility
+.sprite {
+	.img-retina("../img/sprite.png", "../img/sprite@2x.png", 200px, 190px); // x1 width and height
+}
 
 // ==========================================================================
 //    Header
@@ -301,3 +333,9 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 @media (min-width: @screen-md-min) { }
 
 @media (min-width: @screen-lg-min) { }
+
+// ==========================================================================
+//    Theme CSS Import
+// ========================================================================== 
+
+@import "theme.less";
