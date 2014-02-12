@@ -39,7 +39,7 @@ function krank_structured_business() {
 	$business_info =
 		'<div itemscope itemtype="http://schema.org/LocalBusiness" class="business-info">'.
 			'<span class="copy">&copy; '.date('Y').' </span>'.
-			'<span itemprop="name" class="name">'.$business_name.'</span>
+			'<span itemprop="name" class="name">'.$business_name.' | </span>
 			 <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="address">'.
 				$address_lines.
 			'</div><!--/.address-->

@@ -1,3 +1,11 @@
+/**
+ * Krank Base CSS
+ * @package Krank
+*/
+/**
+ * Krank Variables and Bootstrap Overides
+ * @package Krank
+*/
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -5820,6 +5828,35 @@ td.visible-print {
 }
 .gallery-row {
   padding: 15px 0;
+}
+.content-info .business-info {
+  color: #95a5a6;
+  text-align: center;
+}
+.content-info .business-info .address {
+  display: inline-block;
+}
+.content-info .business-info .contact span {
+  margin-right: 7.5px;
+}
+.content-info .business-info .opening {
+  display: none;
+  height: 0;
+}
+.content-info .location {
+  display: none;
+}
+.author {
+  padding: 15px;
+  color: #bdc3c7;
+  text-align: center;
+  font-size: 85%;
+}
+.author a {
+  color: #bdc3c7;
+}
+.author a:hover {
+  color: #49c9b0;
 }
 .contact-form .contact-fields input,
 .contact-form .contact-fields textarea {

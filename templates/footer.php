@@ -6,5 +6,8 @@
     </div>
   </div>
 </footer>
+<div class="author container">
+	Design &amp; website build by: <a href="http://www.krankcreative.co.uk" title="See What Krank Creative Can Do For You! Web Design, Graphic Design, Marketing &amp; E-commerce | Kendal, Cumbria"><span>Krank Creative </span>| Website Design, Marketing &amp; E-commerce Solutions | Kendal, Cumbria.</a>
+</div>
 
 <?php wp_footer(); ?>
