@@ -7,7 +7,7 @@
 
 // General Options
 $this->sections[] = array(
-	'icon' => 'el-icon-cogs',
+	'icon' => 'el-icon-cog',
 	'title' => __('General Settings', 'redux-framework-demo'),
 	'fields' => array(
 		// Business Name
@@ -109,7 +109,7 @@ $this->sections[] = array(
 	)
 );
 
-// General Options
+// Krank SEO
 $this->sections[] = array(
 	'icon' => 'el-icon-search',
 	'title' => __('Krank SEO', 'redux-framework-demo'),
@@ -169,6 +169,34 @@ $this->sections[] = array(
 			'default' => '',
 			'class' => 'small-text',
 			'validate' => 'url'
+		),
+	)
+);
+
+// System Integration
+$this->sections[] = array(
+	'icon' => 'el-icon-cogs',
+	'title' => __('System Integrations', 'redux-framework-demo'),
+	'fields' => array(
+		// GA on off 
+		array(
+			'id'=>'ga',
+			'type' => 'switch', 
+			'title' => __('Google Analytics', 'redux-framework-demo'),
+			'subtitle'=> __('Disable if you do not wish to track your site through GA', 'redux-framework-demo'),
+			"default" 		=> 0,
+			'on' => 'Enabled',
+			'off' => 'Disabled',
+		),
+		// GA Tracking Code
+		array(
+			'id'=>'ga_code',
+			'type' => 'text',
+			'title' => __('Google Analytics Tracking Code (Universal Analytics Only)', 'redux-framework-demo'),
+			'subtitle' => __('Should look something like UA-XXXXXXXX-X', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'default' => '',
+			'class' => 'small-text',
 		),
 	)
 );
