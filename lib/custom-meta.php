@@ -20,6 +20,7 @@ function krank_metaboxes( array $meta_boxes ) {
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_krank_';
 	
+	// Krank page layout options for bootstrap container class
 	$meta_boxes['page_layout'] = array(
 		'id'         => 'page_layout',
 		'title'      => 'Page Layout Options',
@@ -36,6 +37,39 @@ function krank_metaboxes( array $meta_boxes ) {
 			),
 		),
 	);
+	
+	// Krank Custom SEO Options
+	$meta_boxes['custom_seo'] = array(
+		'id'         => 'custom_seo',
+		'title'      => __( 'Page SEO', 'cmb' ),
+		'pages'      => array( 'page', 'post'), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
+		'fields'     => array(
+			array(
+				'name' => __( 'Page Title', 'cmb' ),
+				'desc' => __( 'As the name implies, this will be the title of your page. This is independent of any other option. If not set, the default blog title will get used', 'cmb' ),
+				'id'   => $prefix . 'seo_title',
+				'type' => 'text',
+			),
+			array(
+				'name' => __( 'Meta Description', 'cmb' ),
+				'desc' => __( 'The META description for your homepage. Independent of any other options, the default is no META description at all if this is not set.', 'cmb' ),
+				'id'   => $prefix . 'seo_desc',
+				'type' => 'textarea_small',
+			),
+			array(
+				'name' => __( 'Meta Keywords', 'cmb' ),
+				'desc' => __( 'A comma separated list of your most important keywords for your site that will be written as META keywords on your homepage. Don\'t stuff everything in here.', 'cmb' ),
+				'id'   => $prefix . 'seo_key',
+				'type' => 'textarea_small',
+			),
+		),
+	);
+	
+	
 
 	$meta_boxes['test_metabox'] = array(
 		'id'         => 'test_metabox',

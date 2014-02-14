@@ -23,6 +23,7 @@ require_once locate_template('/lib/custom.php');          // Custom functions
 require_once locate_template('/lib/custom-posts.php');    // Custom Posts
 require_once locate_template('/lib/contact-form.php');    // Contact Form
 require_once locate_template('/lib/shortcodes.php');      // Added Shortcodes
+require_once locate_template('/lib/custom-seo.php');      // Custom seo pack
 
 // Custom Meta Boxes see https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
 if (is_admin()) { require_once locate_template('/lib/custom-meta.php'); }

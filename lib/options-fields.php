@@ -109,6 +109,70 @@ $this->sections[] = array(
 	)
 );
 
+// General Options
+$this->sections[] = array(
+	'icon' => 'el-icon-search',
+	'title' => __('Krank SEO', 'redux-framework-demo'),
+	'fields' => array(
+		// Allow Search engines
+		array(
+			'id'=>'search_index',
+			'type' => 'switch', 
+			'title' => __('Allow searches to index your site', 'redux-framework-demo'),
+			'subtitle'=> __('', 'redux-framework-demo'),
+			"default" => 1,
+			'on' => 'Index',
+			'off' => 'No Index',
+		),
+		// No Index Settings
+		array(
+			'id'=>'no_index',
+			'type' => 'checkbox',
+			'title' => __('Select any specific page types you do not wish to be indexed', 'redux-framework-demo'), 
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'options' => array(
+				'cats' => 'Use noindex For Categories',
+				'date_arch' => 'Use noindex For Date Archives',
+				'auth_arch' => 'Use noindex For Author Archives',
+				'tag_arch' => 'Use noindex For Tag Archives',
+				'search' => 'Use noindex For Search Results'
+			),
+		),
+		// No Index Pages
+		array(
+			'id'=>'pages_no_index',
+			'type' => 'select',
+			'data' => 'pages',
+			'multi' => true,
+			'title' => __('Noindex specific pages', 'redux-framework-demo'), 
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+		),	
+		// No index post types
+		array(
+			'id'=>'post_type_index',
+			'type' => 'select',
+			'data' => 'post_type',
+			'multi' => true,
+			'title' => __('Noindex specific post types', 'redux-framework-demo'), 
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+		),
+		// Google+
+		array(
+			'id'=>'google_plus',
+			'type' => 'text',
+			'title' => __('Google Plus Author Profile', 'redux-framework-demo'),
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('Enter the URL of your Google+ profile page. This will add a link to your search listings', 'redux-framework-demo'),
+			'default' => '',
+			'class' => 'small-text',
+			'validate' => 'url'
+		),
+	)
+);
+
 $this->sections[] = array(
 	'type' => 'divide',
 );
