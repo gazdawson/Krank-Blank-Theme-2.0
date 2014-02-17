@@ -131,6 +131,46 @@ remove_action('wp_head', 'noindex', 1);
 // Add Krank Meta Robots
 add_action('wp_head', 'krank_search_index');
 
+// Krank XML Site Map Generator
+function krank_build_sitemap() {
+	global $krank;
+	$enable = $krank['sitemap_enable'];
+	$frequency = $krank['change_freq'];
+	
+	$postsForSitemap = get_posts(array(
+		'numberposts' => -1,
+		'orderby' => 'modified',
+		'post_type'  => array('post','page'),
+		'order'    => 'DESC'
+	));
+
+	$sitemap = '<?xml version="1.0" encoding="UTF-8"?>';
+	$sitemap .= '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><!-- Krank XML Sitemap Generator -->';
+
+	foreach($postsForSitemap as $post) {
+	setup_postdata($post);
+
+	$postdate = explode(" ", $post->post_modified);
+
+	$sitemap .= 
+	'<url>'.
+		  '<loc>'. get_permalink($post->ID) .'</loc>'.
+		  '<lastmod>'. $postdate[0] .'</lastmod>'.
+		  '<changefreq>'. $frequency .'</changefreq>'.
+	'</url>';
+	}
+
+	$sitemap .= '</urlset>';
+
+	$fp = fopen(ABSPATH . "sitemap.xml", 'w');
+	if ($enable == 1) {
+		fwrite($fp, $sitemap);
+		fclose($fp);
+	}
+}
+add_action("publish_post", "krank_build_sitemap");
+add_action("publish_page", "krank_build_sitemap");
+
 // Keyword generator
 function krank_extract_keywords($str, $minWordLen = 3, $minWordOccurrences = 3, $asArray = false) {
 	

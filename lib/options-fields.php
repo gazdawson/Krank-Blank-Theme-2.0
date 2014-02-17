@@ -170,6 +170,32 @@ $this->sections[] = array(
 			'class' => 'small-text',
 			'validate' => 'url'
 		),
+		// XML Site map
+		array(
+			'id'=>'sitemap_enable',
+			'type' => 'switch', 
+			'title' => __('XML Sitemap Generator', 'redux-framework-demo'),
+			'subtitle'=> __('Produces sitemap.xml file in the sites root directory for submission to search engines.', 'redux-framework-demo'),
+			"default" => 0,
+			'on' => 'Enabled',
+			'off' => 'Disabled',
+		),
+		// sitemap change frequency
+		array(
+			'id'=>'change_freq',
+			'type' => 'radio',
+			'title' => __('Site Change Frequency', 'redux-framework-demo'), 
+			'subtitle' => __('Select how often you change your sites content. This will be added to the XML sitemap to help search engines understand how often they need to index your content.', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'options' => array(
+				'daily' => 'Daily', 
+				'weekly' => 'Weekly', 
+				'monthly' => 'Monthly',
+				'yearly' => 'Yearly',
+				'never' => 'Never'
+			), //Must provide key => value pairs for radio options
+			'default' => 'monthly'
+		),
 	)
 );
 
