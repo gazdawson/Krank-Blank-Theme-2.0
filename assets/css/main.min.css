@@ -6808,6 +6808,79 @@ fieldset[disabled] .contact-form .contact-submit .btn.active {
 .short-open dl.open-hours:after:after {
   clear: both;
 }
+.carousel {
+  margin: 30px 0;
+  min-height: 300px;
+}
+@media (max-width: 767px) {
+  .carousel,
+  tr.carousel,
+  th.carousel,
+  td.carousel {
+    display: none !important;
+  }
+}
+.carousel .carousel-inner .item .carousel-caption .carousel-title {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+.carousel .carousel-inner .item .carousel-caption .carousel-title small,
+.carousel .carousel-inner .item .carousel-caption .carousel-title .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #bdc3c7;
+}
+.carousel .carousel-inner .item .carousel-caption .carousel-title small,
+.carousel .carousel-inner .item .carousel-caption .carousel-title .small {
+  font-size: 65%;
+}
+.carousel .carousel-inner .item .carousel-caption .carousel-description {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+@media (min-width: 768px) {
+  .carousel .carousel-inner .item .carousel-caption .carousel-description {
+    font-size: 21px;
+  }
+}
+.carousel .carousel-control span {
+  font-size: 60px;
+  line-height: 300px;
+}
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: .5s;
+  -moz-transition-duration: .5s;
+  -o-transition-duration: .5s;
+  transition-duration: .5s;
+}
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
 .aligncenter {
   display: block;
   margin: 0 auto;

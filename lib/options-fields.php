@@ -227,6 +227,35 @@ $this->sections[] = array(
 	)
 );
 
+// Carousels
+$this->sections[] = array(
+	'icon' => 'el-icon-picture',
+	'title' => __('Carousels', 'redux-framework-demo'),
+	'fields' => array(
+		array(
+			'id'=>'home_slides_switch',
+			'type' => 'switch', 
+			'title' => __('Enable / Disable Home Page Carousel', 'redux-framework-demo'),
+			'subtitle'=> __('', 'redux-framework-demo'),
+			"default" => 1,
+			'on' => 'Enabled',
+			'off' => 'Disabled',
+		),
+		array(
+			'id'=>'home_slides',
+			'type' => 'slides',
+			'title' => __('Homepage Main Carousel', 'redux-framework-demo'),
+			'subtitle'=> __('Unlimited slides with drag and drop sortings.', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'placeholder' => array(
+				'title' => __('Slide Title', 'redux-framework-demo'),
+				'description' => __('Slide Description Here', 'redux-framework-demo'),
+				'url' => __('Slide URL link', 'redux-framework-demo'),
+			),						
+		),
+	)
+);
+
 $this->sections[] = array(
 	'type' => 'divide',
 );
