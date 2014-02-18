@@ -7,7 +7,7 @@
 
 // General Options
 $this->sections[] = array(
-	'icon' => 'el-icon-cogs',
+	'icon' => 'el-icon-cog',
 	'title' => __('General Settings', 'redux-framework-demo'),
 	'fields' => array(
 		// Business Name
@@ -105,6 +105,153 @@ $this->sections[] = array(
 				'Saturday'=>'09:00 - 17:30',
 				'Sunday'=>'09:00 - 16:00'
 			),
+		),
+	)
+);
+
+// Krank SEO
+$this->sections[] = array(
+	'icon' => 'el-icon-search',
+	'title' => __('Krank SEO', 'redux-framework-demo'),
+	'fields' => array(
+		// Allow Search engines
+		array(
+			'id'=>'search_index',
+			'type' => 'switch', 
+			'title' => __('Allow searches to index your site', 'redux-framework-demo'),
+			'subtitle'=> __('', 'redux-framework-demo'),
+			"default" => 1,
+			'on' => 'Index',
+			'off' => 'No Index',
+		),
+		// No Index Settings
+		array(
+			'id'=>'no_index',
+			'type' => 'checkbox',
+			'title' => __('Select any specific page types you do not wish to be indexed', 'redux-framework-demo'), 
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'options' => array(
+				'cats' => 'Use noindex For Categories',
+				'date_arch' => 'Use noindex For Date Archives',
+				'auth_arch' => 'Use noindex For Author Archives',
+				'tag_arch' => 'Use noindex For Tag Archives',
+				'search' => 'Use noindex For Search Results'
+			),
+		),
+		// No Index Pages
+		array(
+			'id'=>'pages_no_index',
+			'type' => 'select',
+			'data' => 'pages',
+			'multi' => true,
+			'title' => __('Noindex specific pages', 'redux-framework-demo'), 
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+		),	
+		// No index post types
+		array(
+			'id'=>'post_type_index',
+			'type' => 'select',
+			'data' => 'post_type',
+			'multi' => true,
+			'title' => __('Noindex specific post types', 'redux-framework-demo'), 
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+		),
+		// Google+
+		array(
+			'id'=>'google_plus',
+			'type' => 'text',
+			'title' => __('Google Plus Author Profile', 'redux-framework-demo'),
+			'subtitle' => __('', 'redux-framework-demo'),
+			'desc' => __('Enter the URL of your Google+ profile page. This will add a link to your search listings', 'redux-framework-demo'),
+			'default' => '',
+			'class' => 'small-text',
+			'validate' => 'url'
+		),
+		// XML Site map
+		array(
+			'id'=>'sitemap_enable',
+			'type' => 'switch', 
+			'title' => __('XML Sitemap Generator', 'redux-framework-demo'),
+			'subtitle'=> __('Produces sitemap.xml file in the sites root directory for submission to search engines.', 'redux-framework-demo'),
+			"default" => 0,
+			'on' => 'Enabled',
+			'off' => 'Disabled',
+		),
+		// sitemap change frequency
+		array(
+			'id'=>'change_freq',
+			'type' => 'radio',
+			'title' => __('Site Change Frequency', 'redux-framework-demo'), 
+			'subtitle' => __('Select how often you change your sites content. This will be added to the XML sitemap to help search engines understand how often they need to index your content.', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'options' => array(
+				'daily' => 'Daily', 
+				'weekly' => 'Weekly', 
+				'monthly' => 'Monthly',
+				'yearly' => 'Yearly',
+				'never' => 'Never'
+			), //Must provide key => value pairs for radio options
+			'default' => 'monthly'
+		),
+	)
+);
+
+// System Integration
+$this->sections[] = array(
+	'icon' => 'el-icon-cogs',
+	'title' => __('System Integrations', 'redux-framework-demo'),
+	'fields' => array(
+		// GA on off 
+		array(
+			'id'=>'ga',
+			'type' => 'switch', 
+			'title' => __('Google Analytics', 'redux-framework-demo'),
+			'subtitle'=> __('Disable if you do not wish to track your site through GA', 'redux-framework-demo'),
+			"default" 		=> 0,
+			'on' => 'Enabled',
+			'off' => 'Disabled',
+		),
+		// GA Tracking Code
+		array(
+			'id'=>'ga_code',
+			'type' => 'text',
+			'title' => __('Google Analytics Tracking Code (Universal Analytics Only)', 'redux-framework-demo'),
+			'subtitle' => __('Should look something like UA-XXXXXXXX-X', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'default' => '',
+			'class' => 'small-text',
+		),
+	)
+);
+
+// Carousels
+$this->sections[] = array(
+	'icon' => 'el-icon-picture',
+	'title' => __('Carousels', 'redux-framework-demo'),
+	'fields' => array(
+		array(
+			'id'=>'home_slides_switch',
+			'type' => 'switch', 
+			'title' => __('Enable / Disable Home Page Carousel', 'redux-framework-demo'),
+			'subtitle'=> __('', 'redux-framework-demo'),
+			"default" => 1,
+			'on' => 'Enabled',
+			'off' => 'Disabled',
+		),
+		array(
+			'id'=>'home_slides',
+			'type' => 'slides',
+			'title' => __('Homepage Main Carousel', 'redux-framework-demo'),
+			'subtitle'=> __('Unlimited slides with drag and drop sortings.', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'placeholder' => array(
+				'title' => __('Slide Title', 'redux-framework-demo'),
+				'description' => __('Slide Description Here', 'redux-framework-demo'),
+				'url' => __('Slide URL link', 'redux-framework-demo'),
+			),						
 		),
 	)
 );

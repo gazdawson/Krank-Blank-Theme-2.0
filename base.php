@@ -3,7 +3,7 @@
 
   <!--[if lt IE 8]>
     <div class="alert alert-warning">
-      <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?>
+      <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> and improve your experience.', 'krank'); ?>
     </div>
   <![endif]-->
 
@@ -16,9 +16,18 @@
       get_template_part('templates/header');
     }
   ?>
+  
+  <?php
+    // Krank remove container class option
+  	$container_class = get_post_meta($post->ID, '_krank_container', true);
+	if ($container_class == false) {
+		$container = ' container';
+		$row = ' row';
+	}
+  ?>
 
-  <div class="wrap container" role="document">
-    <div class="content row">
+  <div class="wrap<?php echo $container; ?>" role="document">
+    <div class="content<?php echo $row; ?>">
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
@@ -34,3 +43,5 @@
 
 </body>
 </html>
+
+

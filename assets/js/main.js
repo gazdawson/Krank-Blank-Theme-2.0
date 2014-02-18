@@ -40,14 +40,33 @@ var Krank = {
 	  	$('div.contact-form-info .close').on('click',function(){
 	  		$('div.contact-form-info').slideUp().fadeOut('fast');
 	  	});
+		
+		// Bootstrap Navigation Drop Down on Rollover
+		if( $(window).width() > 767 ) {
+			$('ul.nav li.dropdown').mouseenter(function(){
+				 $(this).children('ul.dropdown-menu').slideDown('300ms')
+			});
+			$('li.dropdown').mouseleave(function(){
+				$('ul.dropdown-menu').fadeOut('300ms');
+			})
+			$('ul.dropdown-menu').mouseleave(function(){
+				$(this).fadeOut('300ms');
+			});
+		}
 	
+	// End Coomon Functions
     }
   },
   // Home page
   home: {
     init: function() {
       // JavaScript to be fired on the home page
-	
+		
+	  	// Carousel Speed
+		$('.carousel').carousel({
+		  interval: '4000'
+		})
+		
     }
   },
   // About us page, note the change from about-us to about_us.
