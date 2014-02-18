@@ -188,6 +188,7 @@ a, button, .btn {
 // ==========================================================================
 
 .contact-form {
+	margin: @pad-md 0;
 	.contact-fields {
 		input, textarea {
 			.input-lg;
@@ -205,6 +206,10 @@ a, button, .btn {
 			}
 			&:focus {
 				border-bottom-width: 1px;
+				border-color: @brand-primary;
+				-webkit-box-shadow: inset 0 1px 1px transparent, 0 0 8px fade(@brand-primary, 60%);
+				-moz-box-shadow: inset 0 1px 1px transparent, 0 0 8px fade(@brand-primary, 60%);
+				box-shadow: inset 0 1px 1px transparent, 0 0 8px fade(@brand-primary, 60%);
 				padding-bottom: 6;
 			}
 		}

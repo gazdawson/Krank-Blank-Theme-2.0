@@ -61,7 +61,12 @@ var Krank = {
   home: {
     init: function() {
       // JavaScript to be fired on the home page
-	
+		
+	  	// Carousel Speed
+		$('.carousel').carousel({
+		  interval: '4000'
+		})
+		
     }
   },
   // About us page, note the change from about-us to about_us.
