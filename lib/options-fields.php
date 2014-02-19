@@ -109,6 +109,22 @@ $this->sections[] = array(
 	)
 );
 
+// Design and Layout
+$this->sections[] = array(
+	'icon' => 'el-icon-pencil',
+	'title' => __('Design', 'redux-framework-demo'),
+	'fields' => array(
+		// Business Logo
+		array(
+			'id'=>'logo',
+			'type' => 'media', 
+			'title' => __('Business Logo', 'redux-framework-demo'),
+			'desc'=> __('Upload your logo JPG, PNG or GIF format accepted', 'redux-framework-demo'),
+			'subtitle' => __('', 'redux-framework-demo'),
+		),	
+	)
+);
+
 // Krank SEO
 $this->sections[] = array(
 	'icon' => 'el-icon-search',
