@@ -27,6 +27,9 @@
   ?>
 
   <div class="wrap<?php echo $container; ?>" role="document">
+	<div class="breadcrumbs">
+		<?php krank_breadcrumbs(); // Custom Breadcrumbs ?>
+	</div>
     <div class="content<?php echo $row; ?>">
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>

@@ -5012,6 +5012,8 @@ button.close {
 .panel-body:after,
 .modal-footer:before,
 .modal-footer:after,
+.breadcrumbs:before,
+.breadcrumbs:after,
 .content-info .footer:before,
 .content-info .footer:after {
   content: " ";
@@ -5031,6 +5033,7 @@ button.close {
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
+.breadcrumbs:after,
 .content-info .footer:after {
   clear: both;
 }
@@ -6601,6 +6604,10 @@ button:hover,
 }
 .navbar.affix.in {
   background-color: transparent;
+}
+.breadcrumbs {
+  margin-left: 0;
+  margin-right: 0;
 }
 .gallery-row {
   padding: 15px 0;

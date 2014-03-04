@@ -212,6 +212,16 @@ $this->sections[] = array(
 			), //Must provide key => value pairs for radio options
 			'default' => 'monthly'
 		),
+		// Add Breadcrumbs
+		array(
+			'id'=>'breadcrumbs',
+			'type' => 'switch', 
+			'title' => __('Add Breadcrumb Navigation to Pages and Posts', 'redux-framework-demo'),
+			'subtitle'=> __('', 'redux-framework-demo'),
+			"default" => 1,
+			'on' => 'Enabled',
+			'off' => 'Disabled',
+		),
 	)
 );
 
