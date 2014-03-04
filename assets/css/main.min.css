@@ -6728,6 +6728,9 @@ fieldset[disabled] .contact-form .contact-submit .btn.active {
   color: #49c9b0;
   background-color: #ffffff;
 }
+.contact-form .contact-submit .small {
+  color: #bdc3c7;
+}
 .contact-form-info.success,
 .contact-form-info.error {
   color: white;
