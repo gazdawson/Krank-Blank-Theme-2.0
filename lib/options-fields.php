@@ -220,6 +220,17 @@ $this->sections[] = array(
 	'icon' => 'el-icon-cogs',
 	'title' => __('System Integrations', 'redux-framework-demo'),
 	'fields' => array(
+		// Contact Email
+		array(
+			'id'=>'contact_email',
+			'type' => 'text',
+			'title' => __('Contact Form Email Address', 'redux-framework-demo'),
+			'subtitle' => __('The email address you wish messages via the contact form to be delivered to.', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'default' => 'info@site.com',
+			'validate' => 'email',
+			'class' => 'small-text',
+		),
 		// GA on off 
 		array(
 			'id'=>'ga',
