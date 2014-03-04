@@ -27,7 +27,7 @@ function krank_page_meta() {
 	global $post;
 	global $krank;
 
-	$meta = '<!-- Krank Search Engine Optimisation Pack -->';
+	$meta = '<!-- Krank Search Engine Optimisation -->';
 	
 	// Custom seo meta
 	$meta_desc = get_post_meta($post->ID, '_krank_seo_desc', true);
@@ -40,7 +40,7 @@ function krank_page_meta() {
 	endwhile;
 	
 	// String Work on page excerpt
-	if (is_page() && $page_content) {
+	if ($page_content) {
 		$excerpt = strip_tags($page_content);
 		$meta_excerpt = substr($excerpt , 0, strpos($excerpt, '. ', 157));
 	}
@@ -55,7 +55,7 @@ function krank_page_meta() {
 		$meta .= '<meta name="description" content="'.$meta_desc.'">';
 	}
 	if (!$meta_desc) {
-		$meta .= '<meta name="description" content="'.$meta_excerpt.'.">';
+		$meta .= '<meta name="description" content="'.$meta_excerpt.'">';
 	}
 	
 	// Meta keywords
@@ -65,6 +65,11 @@ function krank_page_meta() {
 	if (!$meta_key) {
 		$keyword_gen = krank_extract_keywords($excerpt);
 		$meta .= '<meta name="keywords" content="'.$keyword_gen.'">';
+	}
+	
+	// Remove on posts if no custom meta
+	if (is_singular() && !$meta_key && !$meta_desc) {
+		$meta = '';
 	}
 	
 	echo $meta;
@@ -78,14 +83,13 @@ function krank_search_index() {
 	global $krank;
 	$search_index = $krank['search_index'];
 	$no_index = $krank['no_index'];
-	$pages_noindex = $krank['pages_no_index'];
-	$post_noindex = $krank['post_type_index'];
-	
 	$cats = $no_index['cats'];
 	$date_arch = $no_index['date_arch'];
 	$auth_arch = $no_index['auth_arch'];
 	$tag_arch = $no_index['tag_arch'];
 	$search = $no_index['search'];
+	$pages_noindex = $krank['pages_no_index'];
+	$post_noindex = $krank['post_type_index'];
 	
 	// Output vars;
 	$yes = '<meta name="robots" content="index,follow">';
@@ -103,7 +107,7 @@ function krank_search_index() {
 	if( $pages_noindex && is_page($pages_noindex) ) {
 		$output = $no;
 	}
-	if( is_singular( $post_noindex ) ) {
+	if( $post_noindex && is_singular( $post_noindex ) ) {
 		$output = $no;
 	}
 	// check for specific page types
