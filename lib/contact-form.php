@@ -20,7 +20,13 @@ function contact_form_get_the_ip() {
 // the shortcode
 function contact_form_sc($atts) {
 	global $krank;
-	$contact_email = $krank['contact_email'];
+	
+	if ($krank['contact_email']) {
+		$contact_email = $krank['contact_email'];
+	}
+	else {
+		$contact_email = get_bloginfo('admin_email');
+	}
 	
 	extract(shortcode_atts(array(
 		"title" => '',
@@ -102,7 +108,7 @@ function contact_form_sc($atts) {
 	if($sent == true) {
 		return $info.$email_form;
 	} else {
-		return $info.$email_form;;
+		return $info.$email_form;
 	}
 } 
 add_shortcode('contact-form', 'contact_form_sc');
