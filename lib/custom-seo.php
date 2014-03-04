@@ -68,7 +68,6 @@ function krank_page_meta() {
 	}
 	
 	echo $meta;
-	print_r();
 }
 // Add new Krank meta to head
 add_action('wp_head', 'krank_page_meta');

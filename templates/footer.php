@@ -1,9 +1,17 @@
 <footer class="content-info container" role="contentinfo">
   <div class="row">
-    <div class="col-lg-12">
+    <div>
       <?php dynamic_sidebar('sidebar-footer'); ?>
 	  <?php echo krank_structured_business();?>
     </div>
+    <nav class="foot footer-nav">
+	<h4>Useful Links</h4>
+      <?php
+        if (has_nav_menu('footer_navigation')) :
+          wp_nav_menu(array('theme_location' => 'footer_navigation', 'menu_class' => 'nav'));
+        endif;
+      ?>
+    </nav>
   </div>
 </footer>
 <div class="author container">

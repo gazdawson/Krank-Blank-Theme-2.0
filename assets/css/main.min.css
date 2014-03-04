@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700);
 /**
  * Krank Base CSS
  * @package Krank
@@ -6546,6 +6547,9 @@ td.visible-print {
 .fa-plus-square-o:before {
   content: "\f196";
 }
+body {
+  font-weight: normal;
+}
 a,
 button,
 .btn {
@@ -6580,6 +6584,20 @@ button:hover,
     background-image: url("../img/sprite@2x.png");
     background-size: 200px 190px;
   }
+}
+.navbar.affix {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin-top: 0;
+  z-index: 1030;
+  background-color: red;
+  -webkit-transition: background-color 0.3s linear;
+  transition: background-color 0.3s linear;
+}
+.navbar.affix.in {
+  background-color: transparent;
 }
 .gallery-row {
   padding: 15px 0;

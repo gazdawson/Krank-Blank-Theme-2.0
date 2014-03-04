@@ -53,7 +53,27 @@ var Krank = {
 				$(this).fadeOut('300ms');
 			});
 		}
-	
+		
+		// // Sticky Nav
+		// 	    $('.navbar').affix({
+		// 	      	offset: {
+		// 	        top: 170
+		// 	      	, bottom: function () {
+		// 	          return (this.bottom = $('.footer').outerHeight(true))
+		// 	        }
+		// 	      }
+		// 	    })
+		// // Sticky Nav Before Fire
+		// $('.navbar').on('affix.bs.affix', function () {
+		// 	$('.logo').animate({height: '30px'}, 300);
+		// 	$(this).animate({height: '30px'}, 1000);
+		// });
+		// // Sticky Nav After Fire
+		// $('.navbar').on('affix-top.bs.affix', function () {
+		// 	$('.logo').animate({height: '70px'}, 300);
+		// 	$(this).animate({height: '30px'}, 'fast');
+		// });
+		
 	// End Coomon Functions
     }
   },
