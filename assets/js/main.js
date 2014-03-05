@@ -74,7 +74,7 @@ var Krank = {
 		// 	$(this).animate({height: '30px'}, 'fast');
 		// });
 		
-	// End Coomon Functions
+	// End Common Functions
     }
   },
   // Home page

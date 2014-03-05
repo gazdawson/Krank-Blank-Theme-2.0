@@ -21,6 +21,11 @@ function roots_scripts() {
     wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false);
     add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
+  
+  // Google maps api for contact page
+  if(!is_admin() && is_page( 'contact' )) {
+  	wp_register_script('google_maps_api', '//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), null, false);
+  }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
@@ -33,6 +38,7 @@ function roots_scripts() {
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_scripts');
   wp_enqueue_script('krank_main');
+  wp_enqueue_script('google_maps_api');
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 

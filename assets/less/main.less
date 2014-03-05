@@ -135,7 +135,7 @@ a, button, .btn {
 // ==========================================================================
 
 .breadcrumbs {
-	.make-row(0);
+	.container-fixed();
 }
 
 // ==========================================================================
@@ -229,8 +229,38 @@ a, button, .btn {
 //    Pages
 // ========================================================================== 
 
-
-
+// Contact Page
+.contact {
+	.full-width {
+		position: relative;
+		.make-row(0);
+		.contact-sidebar {
+			position: absolute;
+			width: 100%;
+			top: @pad-md;
+		}
+		.contact-side-content {
+			width: 250px;
+			padding: @pad-sm;
+			background: white;
+			float: right;
+			
+			.border-top-radius(@border-radius-base);
+			.border-bottom-radius(@border-radius-base);
+			.box-shadow(0 1px 5px rgba(0,0,0,.2))
+		}
+	}
+	// Google Map
+	#map {
+		width: 100%;
+		height: 800px;
+		margin-bottom: @pad-md;
+		.infoWindow {
+			padding: 10px;
+			width: 200px;
+		}
+	}
+}
 
 // ==========================================================================
 //    Contact Form
