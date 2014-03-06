@@ -1,3 +1,4 @@
+<?php global $krank; ?>
 <header class="banner navbar navbar-default navbar-static-top" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -7,10 +8,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo home_url(); ?>/" title="<?php bloginfo('name'); ?>">
-		  <?php if($krank['logo']): ?>
-		  	<img class="logo" src="<?php echo $krank['logo']['url']; ?>" alt="<?php bloginfo('name'); ?>" />
-	  	  <?php endif; ?>
+	  <?php 
+	  	if($krank['logo']['url']) {
+	  		$background = 'background: url(\''.$krank['logo']['url'].'\');';
+	  	}
+	  ?>
+	  <a class="navbar-brand" href="<?php echo home_url(); ?>/" title="<?php bloginfo('name'); ?>" style="<?php echo $background; ?>">
 		  <span class="name"><?php bloginfo('name'); ?></span>
 	  </a>
     </div>

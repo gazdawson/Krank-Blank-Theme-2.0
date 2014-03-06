@@ -139,7 +139,7 @@ function krank_breadcrumbs() {
 	global $krank;
 	$breadcrumb = $krank['breadcrumbs'];
 	
-    $output .= '<ul class="breadcrumb">';
+    $output .= '<div class="breadcrumbs container"><ul class="breadcrumb">';
 	// Master Page
     $output .= '<li><a href="'.get_option('home').'" title="'.get_option('blogname').' | '.get_option('blogdescription').'">Home</a></li>';
 	// Categories and Single
@@ -180,7 +180,7 @@ function krank_breadcrumbs() {
 		$search = get_search_query();
 		$output .= '<li>Search Results For "'.$search.'"</li>';
 	}
-   $output .= '</ul>';
+   $output .= '</ul></div>';
    
    // echo the breadcrumb
    if (!is_front_page()){

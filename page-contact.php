@@ -16,6 +16,7 @@
 			<div class="contact-side-content">
 				<h3>Contact Us</h3>
 				<?php echo do_shortcode('[contact]'); ?>
+				<h4>Send a Message</h4>
 				<?php echo do_shortcode('[contact-form]'); ?>
 			</div>
 		</div>

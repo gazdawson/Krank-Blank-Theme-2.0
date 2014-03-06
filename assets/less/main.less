@@ -109,7 +109,16 @@ a, button, .btn {
 	.container {}
 	.navbar-header {
 		.navbar-toggle {}
-		.navbar-brand {}
+		.navbar-brand {
+			margin: 10px @pad-sm 0 0;
+			background: url('../img/logo@2x.png');
+			background-size: 100% !important;
+			background-repeat: no-repeat;
+			width: 120px;
+			span {
+				.hide-text;
+			}
+		}
 	}
 	.navbar-collapse {
 		.navbar-nav {}
@@ -136,6 +145,13 @@ a, button, .btn {
 
 .breadcrumbs {
 	.container-fixed();
+	.breadcrumb {
+		background-color: @clouds;
+	}
+	.breadcrumb > li + li:before {
+		content: '\f105';
+		font-family: FontAwesome;
+	}
 }
 
 // ==========================================================================
@@ -174,6 +190,8 @@ a, button, .btn {
 // ========================================================================== 
 
 .content-info {
+	background: #fff;
+	border-top: 1px solid @clouds;
 	.footer {
 		.make-row(0);
 	}
