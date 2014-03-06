@@ -54,6 +54,19 @@ var Krank = {
 			});
 		}
 		
+        // Header Search Form Reveal
+        $('.search-reveal').click(function() {
+            var $search = $('.search-form');
+            if ($search.is(':visible')) {
+                // Slide away
+                $search.hide('fast');
+            }
+            else {
+                // Slide in
+                $search.show('slow');
+            }
+        });
+		
 		// // Sticky Nav
 		// 	    $('.navbar').affix({
 		// 	      	offset: {
