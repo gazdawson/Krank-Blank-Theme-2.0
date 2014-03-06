@@ -64,12 +64,12 @@
 
 // ==========================================================================
 //    Base
-// ========================================================================== 
-
+// ==========================================================================
 body {
+	position: relative;
+	top: @navbar-height;
 	font-weight: @font-weight-base;
 }
-	
 // Button and link transitions
 a, button, .btn {
 	-webkit-transition: color @trans, background-color @trans, background @trans;
@@ -108,21 +108,46 @@ a, button, .btn {
 .navbar {
 	.container {}
 	.navbar-header {
+		.make-sm-column(2,0);
 		.navbar-toggle {}
 		.navbar-brand {
-			margin: 10px @pad-sm 0 0;
 			background: url('../img/logo@2x.png');
 			background-size: 100% !important;
 			background-repeat: no-repeat;
-			width: 120px;
+			.navbar-vertical-align(50px);
+			margin-left: 0;
+			width: @navbar-height*2;
 			span {
 				.hide-text;
 			}
 		}
 	}
 	.navbar-collapse {
+		.make-sm-column(6,0);
 		.navbar-nav {}
 	}
+	.search {
+		.make-sm-column(4,0);
+		.search-form {
+			display: none;
+			.navbar-vertical-align(34px);
+			float: left;
+			.input-group-btn {
+				display: none;
+			}
+		}
+		.search-reveal {
+			font-size: 20px;
+			line-height: 34px;
+			.navbar-vertical-align(34px);
+			float: left;
+			cursor: pointer;
+			&:hover {
+				color: @brand-primary;
+			}
+		}
+	}
+
 	// Sticky Nav
 	&.affix {
 		position: fixed;
@@ -137,6 +162,11 @@ a, button, .btn {
 	      background-color: transparent;
 	    }
 	}
+	// Contact Modal
+	.contact-modal {
+	}
+	
+	
 } 
 
 // ==========================================================================
@@ -144,12 +174,23 @@ a, button, .btn {
 // ==========================================================================
 
 .breadcrumbs {
-	.container-fixed();
+	background-color: lighten(@clouds, 5%);
+	color: lighten(@asbestos, 20%);
+	font-size: 12px;
+	border-bottom: 1px solid @navbar-default-border;
+	margin-bottom: @pad-md;
+	.page-title {
+		.pull-left;
+		padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
+	}
 	.breadcrumb {
-		background-color: @clouds;
+		.pull-right;
+		margin: 0;
+		span {
+			margin-right: 10px;
+		}
 	}
 	.breadcrumb > li + li:before {
-		content: '\f105';
 		font-family: FontAwesome;
 	}
 }
@@ -270,7 +311,7 @@ a, button, .btn {
 	}
 	// Google Map
 	#map {
-		width: 100%;
+		.make-row();
 		height: 800px;
 		margin-bottom: @pad-md;
 		.infoWindow {
@@ -430,25 +471,34 @@ a, button, .btn {
 // Main Carousel Styles
 .carousel {
 	margin: @pad-md 0;
-	min-height: 300px;
 	.hidden-xs;
 	.carousel-inner {
 		.item{
 			img {}
 			.carousel-caption {
+				top: 40%;
+				.slideUp;
 				.carousel-title {
-					.h2;
+					font-size: @font-size-h2;
+					font-weight: 300;
+					background-color: fade(#000,50%);
+					padding: 0 10px;
 				}
 				.carousel-description {
-					.lead;
+					font-size: @font-size-h3;
+					font-weight: 300;
+					background-color: fade(#000,50%);
+					padding: 0 10px;
+					display: inline-block;
 				}
 			}
 		}
 	}
 	.carousel-control{
+		background-image: none;
 		span {
 			font-size: 60px;
-			line-height: 300px;
+			line-height: 400px;
 		}
 	}
 	.carousel-indicators{}
@@ -481,6 +531,51 @@ a, button, .btn {
 }
 .carousel-fade .carousel-control {
   z-index: 2;
+}
+
+// Animations 
+.slideUp {
+	animation-name: slideUp;
+	-webkit-animation-name: slideUp;
+	animation-duration: 1s;	
+	-webkit-animation-duration: 1s;
+	animation-timing-function: ease;	
+	-webkit-animation-timing-function: ease;
+	
+	visibility: visible !important;			
+}
+
+@keyframes slideUp {
+	0% { 
+		transform: translateY(100%);
+		opacity: 0.0;
+	}
+	50% {
+		opacity: 0.0;
+	}
+	100% { 
+		transform: translateY(0%); 
+		opacity: 1;
+	}	
+}
+
+@-webkit-keyframes slideUp {
+	0% { 
+		-webkit-transform: translateY(100%);
+		opacity: 0.0;
+	}
+	50% {
+		opacity: 0.0;
+	}
+	100% { 
+		-webkit-transform: translateY(0%);
+		opacity: 1;
+	}	
+}
+
+// Home Carousel
+#home-carousel {
+	margin-top: 0;
 }
 
 // ==========================================================================
