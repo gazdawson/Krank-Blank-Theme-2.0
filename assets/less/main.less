@@ -3,6 +3,7 @@
  * @package Krank
 */
 
+#wpadminbar {display: none;}
 // ==========================================================================
 //    Bootstrap
 // ========================================================================== 
@@ -80,8 +81,26 @@ a, button, .btn {
 		text-decoration: none;
 	}
 }
+// Font Awesome integration
+i {
+	.krank-ico;
+}
 .btn {
 	text-shadow: none !important;
+}
+
+.btn-outline {
+	.button-variant(@gray-dark, transparent, @gray-dark);
+	border-width: 2px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 700;
+	font-size: 12px;
+	
+	&:hover {
+		border-color: @brand-primary;
+		color: @brand-primary;
+	}
 }
 
 // text selection color change
@@ -123,17 +142,24 @@ a, button, .btn {
 		}
 	}
 	.navbar-collapse {
-		.make-sm-column(6,0);
+		.make-sm-column(9,0);
 		.navbar-nav {}
 	}
 	.search {
-		.make-sm-column(4,0);
 		.search-form {
 			display: none;
-			.navbar-vertical-align(34px);
+			.navbar-vertical-align(50px);
 			float: left;
-			.input-group-btn {
-				display: none;
+			position: absolute;
+			width: 90%;
+			.input-group {
+				width: 100%;
+				.search-field {
+					height: 50px;
+				}
+				.input-group-btn {
+					display: none;
+				}
 			}
 		}
 		.search-reveal {
@@ -141,6 +167,8 @@ a, button, .btn {
 			line-height: 34px;
 			.navbar-vertical-align(34px);
 			float: left;
+			padding: 0 @pad-sm;
+			border-left: 1px solid @navbar-default-border;
 			cursor: pointer;
 			&:hover {
 				color: @brand-primary;
@@ -163,7 +191,10 @@ a, button, .btn {
 	    }
 	}
 	// Contact Modal
-	.contact-modal {
+	.contactModal {
+		.make-sm-column(1,0);
+		.navbar-vertical-align(34px);
+		.pull-right;
 	}
 	
 	
@@ -214,17 +245,200 @@ a, button, .btn {
 //    Sidebar
 // ========================================================================== 
 
-.sidebar { }
+.sidebar {
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li {
+			color: @gray-light;
+			padding: 10px 0;
+			border-bottom: 1px solid @gray-lighter;
+		}
+	}
+	.widget {
+		h3 { }
+	}
+	.widget_recent_entries {
+		.post-date {
+			display: block;
+			font-size: 85%;
+			color: @gray-light;
+		}
+	}
+}
 
 // ==========================================================================
 //    Posts
 // ========================================================================== 
 
-.hentry header { }
-.hentry time { }
-.hentry .byline { }
-.hentry .entry-content { }
-.hentry footer { }
+.hentry {
+	header {
+		margin-bottom: @pad-sm;
+		h2 {
+			margin-bottom: 0;
+		}
+	}
+	.entry-meta {
+		font-size: 85%;
+		color: @gray-light;
+		.author {
+			font-size: 100%;
+			text-align: left;
+			padding: 0;
+		}
+		span {
+			a {
+				color: @gray-light;
+				&:hover {
+					color: @brand-primary;
+				}
+			}
+		}
+	}
+	.entry-content {
+		padding-bottom: @pad-md;
+		margin-bottom: @pad-md;
+		border-bottom: 1px solid @gray-lighter;
+	}
+	.feat-post {
+		position: absolute;
+		top: 40px;
+		right: -50px;
+		width: 200px;
+		padding: 5px 0;
+		background-color: @brand-primary;;
+		color: white;
+		letter-spacing: 2px;
+		font-weight: 700;
+		font-size: 10px;
+		text-transform: uppercase;
+		text-align: center;
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476); /* IE6,IE7 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)"; /* IE8 */
+	}
+}
+
+// Archive Page
+.blog {
+	.hentry {
+		padding-bottom: @pad-md;
+		margin-bottom: @pad-md;
+		border-bottom: 1px solid @gray-lighter;
+		.feat-img {
+			position: relative;
+			overflow: hidden;
+			img {
+				.img-responsive;
+			}
+			.img-more {
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				line-height: 320px;
+				display: none;
+				background-color: fade(@brand-primary, 50%);
+				i {
+					color: white;
+					font-size: 60px;
+				}
+			}
+		}
+		padding-left: @pad-sm + 50px;
+		position: relative;
+		time { 
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 50px;
+			color: @gray;
+			text-transform: uppercase;
+			font-size: 18px;
+			font-weight: 700;
+			text-align: center;
+			padding-bottom: 10px;
+			border-bottom: 1px solid @gray-lighter;
+			span {
+				display: block;
+				line-height: 24px;
+			}
+			.day {
+				font-size: 200%;
+			}
+		}
+		.entry-summary {
+			.read-more {
+				.btn-outline;
+			}
+		}
+		footer { }
+	}
+}
+
+// ==========================================================================
+//    Comments
+// ==========================================================================
+
+#comments {
+	.comment-content {
+		position: relative;
+		background-color: lighten(@gray-lighter,3%);
+		padding: @pad-sm;
+		margin-left: @pad-sm;
+		.border-top-radius(@border-radius-base);
+		.border-bottom-radius(@border-radius-base);
+		
+		&:after {
+			content: '';
+			position: absolute;
+			top: @pad-sm;
+			left: -14px;
+			width: 0; 
+			height: 0; 
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid transparent;
+			border-right: 15px solid lighten(@gray-lighter,3%);
+		}
+		
+		.media-heading,
+		.media-heading a {
+			color: @text-color;
+			margin: 0;
+		}
+		time a {
+			font-size: 85%;
+			color: @gray-light;
+			&:hover {
+				color: @brand-primary;
+			}
+		}
+		
+		.edit-reply {
+			position: absolute;
+			top: @pad-sm;
+			right: @pad-sm;
+			color: @gray;
+			font-weight: 300;
+			a {
+				color: @gray;
+				&:hover {
+					color: @brand-primary;
+				}
+			}
+			.comment-edit-link {}
+			.comment-reply-link {}
+		}
+	}
+	.avatar {
+		.img-circle;
+	}
+}
 
 // ==========================================================================
 //    Footer
@@ -233,8 +447,8 @@ a, button, .btn {
 .content-info {
 	background: #fff;
 	border-top: 1px solid @clouds;
+	margin-top: @pad-md;
 	.footer {
-		.make-row(0);
 	}
 	.business-info {
 		color: @gray;
@@ -290,29 +504,16 @@ a, button, .btn {
 
 // Contact Page
 .contact {
-	.full-width {
-		position: relative;
+	.breadcrumbs {
+		margin-bottom: 0;
+	}
+	.content {
 		.make-row(0);
-		.contact-sidebar {
-			position: absolute;
-			width: 100%;
-			top: @pad-md;
-		}
-		.contact-side-content {
-			width: 250px;
-			padding: @pad-sm;
-			background: white;
-			float: right;
-			
-			.border-top-radius(@border-radius-base);
-			.border-bottom-radius(@border-radius-base);
-			.box-shadow(0 1px 5px rgba(0,0,0,.2))
-		}
 	}
 	// Google Map
 	#map {
 		.make-row();
-		height: 800px;
+		height: 300px;
 		margin-bottom: @pad-md;
 		.infoWindow {
 			padding: 10px;
@@ -361,9 +562,7 @@ a, button, .btn {
 		.fa {
 			margin-right: 5px;
 		}
-		.btn {
-			.btn-primary;
-		}
+		.btn {}
 		.small {
 			display: block;
 			color: @gray-light;

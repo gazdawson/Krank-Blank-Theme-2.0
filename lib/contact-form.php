@@ -80,10 +80,10 @@ function contact_form_sc($atts) {
 	}
 
 	if($result == $success) {
-		$info = '<div class="contact-form-info success" style="display: none;"><i class="fa fa-check-circle"></i> '.$result.'</div>';
+		$info = '<div class="contact-form-info success" style="display: none;"><i class="fa-check-circle"></i> '.$result.'</div>';
 	}
 	if($result == $error_empty || $result == $error_noemail) {
-		$info = '<div class="contact-form-info error" style="display: none;"><i class="fa fa-exclamation-circle"></i> '.$result.'</div>';
+		$info = '<div class="contact-form-info error" style="display: none;"><i class="fa-exclamation-circle"></i> '.$result.'</div>';
 	}
 	
 	if($title != '') {
@@ -100,8 +100,8 @@ function contact_form_sc($atts) {
 			<textarea class="form-control" name="message" id="cf_message" cols="50" rows="15" placeholder="'.$label_message.'">'.$form_data['message'].'</textarea>
 		</div>
 		<div class="contact-submit">
+			<button class="btn btn-outline" type="submit" name="send" id="cf_send">'.$label_submit.'</button>
 			<span class="small">required*</span>
-			<button class="btn" type="submit" name="send" id="cf_send">'.$label_submit.'</button>
 		</div>
 	</form>';
 	

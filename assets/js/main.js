@@ -87,6 +87,14 @@ var Krank = {
 		// 	$(this).animate({height: '30px'}, 'fast');
 		// });
 		
+		// Post image Hover
+		$('.feat-img a').mouseenter(function() {
+			$(this).find('.img-more').slideToggle('fast');
+		});
+		$('.feat-img a').mouseleave(function() {
+			$(this).find('.img-more').slideToggle('fast');
+		});
+		
 	// End Common Functions
     }
   },

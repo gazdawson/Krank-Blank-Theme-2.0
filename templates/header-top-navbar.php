@@ -17,16 +17,19 @@
 		  <span class="name"><?php bloginfo('name'); ?></span>
 	  </a>
     </div>
+	<div class="contactModal">
+		<button class="btn btn-outline" data-toggle="modal" data-target="#contactModal">Contact</button>
+	</div>
     <nav class="collapse navbar-collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :
           wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav'));
         endif;
       ?>
+	  	<div class="search">
+	  		<?php get_search_form(); ?>
+	  		<i class="search-reveal fa-search"></i>
+	  	</div>
     </nav>
-	<div class="search">
-		<?php get_search_form(); ?>
-		<i class="search-reveal fa fa-search"></i>
-	</div>
   </div>
 </header>

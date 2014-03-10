@@ -5,25 +5,21 @@
  */
 ?>
 
+<div id="map"></div>
 <div class="container header">
 	<?php get_template_part('templates/page', 'header'); ?>
 </div>
-
-<div class="full-width">
-	<div id="map"></div>
-	<div class="contact-sidebar">
-		<div class="container">
-			<div class="contact-side-content">
-				<h3>Contact Us</h3>
-				<?php echo do_shortcode('[contact]'); ?>
-				<h4>Send a Message</h4>
-				<?php echo do_shortcode('[contact-form]'); ?>
-			</div>
+<div class="container">
+	<div class="content">
+		<div class="contact-form">
+			<h2>Send us a Message</h2>
+			<?php echo do_shortcode('[contact-form]'); ?>
+		</div>
+		<div class="contact-info">
+			<h2>Contact Us</h2>
+			<?php echo do_shortcode('[contact]'); ?>
 		</div>
 	</div>
-</div>
-
-<div class="container content">
 	<?php get_template_part('templates/content', 'page'); ?>
 </div>
 
@@ -31,7 +27,7 @@
 	// Load Krank Options
 	$location = $krank['location']['latitude'].', '.$krank['location']['longitude'];
 	$name = $krank['name'];
-	foreach($krank['address'] as $add) {
+	foreach($krank['contact'] as $add) {
 		$address .= $add.'<br/>';
 	}
 	$infoWindow = '<div class="infoWindow"><h4>'.$name.'</h4>'.'<p>'.$address.'</p></div>';
@@ -62,10 +58,9 @@
 		  animation: google.maps.Animation.DROP
 		});
 	
-		google.maps.event.addListener(marker, 'load', function() {
+		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
 		});
-		infowindow.open(map,marker);
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 </script>

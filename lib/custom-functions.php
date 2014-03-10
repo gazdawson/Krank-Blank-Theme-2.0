@@ -39,10 +39,10 @@ function krank_carousel($slide_type, $id, $controls, $indicators, $captions, $tr
 		if ($controls != false) {
 			$control =
 		        '<a class="left carousel-control" href="#'.$id.'" data-slide="prev">
-			        <span class="fa fa-angle-left"></span>
+			        <span class="krank-ico fa-caret-left"></span>
 		        </a>
 		        <a class="right carousel-control" href="#'.$id.'" data-slide="next">
-					<span class="fa fa-angle-right"></span>
+					<span class="krank-ico fa-caret-right"></span>
 		        </a>';
 		}
 		
@@ -151,3 +151,9 @@ function krank_structured_business() {
 	// Return Output
 	return $business_info.$location;
 }
+
+// More link Button instead of ...continued
+function excerpt_read_more( $more ) {
+	return '';
+}
+add_filter( 'excerpt_more', 'excerpt_read_more' );

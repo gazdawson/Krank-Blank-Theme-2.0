@@ -1,16 +1,18 @@
-<footer class="content-info container" role="contentinfo">
-  <div class="footer">
-    <?php dynamic_sidebar('sidebar-footer'); ?>
-    <nav class="footer-nav">
-		<h4>Useful Links</h4>
-	      <?php
-	        if (has_nav_menu('footer_navigation')) :
-	          wp_nav_menu(array('theme_location' => 'footer_navigation', 'menu_class' => 'nav'));
-	        endif;
-	      ?>
-    </nav>
-	<div class="strutured-data">
-		<?php echo krank_structured_business();?>
+<footer class="content-info" role="contentinfo">
+  <div class="footer container">
+	<div class="row">
+	    <?php dynamic_sidebar('sidebar-footer'); ?>
+	    <nav class="footer-nav">
+			<h4>Useful Links</h4>
+		      <?php
+		        if (has_nav_menu('footer_navigation')) :
+		          wp_nav_menu(array('theme_location' => 'footer_navigation', 'menu_class' => 'nav'));
+		        endif;
+		      ?>
+	    </nav>
+		<div class="strutured-data">
+			<?php echo krank_structured_business();?>
+		</div>
 	</div>
   </div>
 </footer>
@@ -30,7 +32,6 @@
 			<div class="modal-footer">
 				<p>Alternatively use one of our other forms of contact to get in touch</p>
 				<?php echo do_shortcode('[contact]'); ?>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
