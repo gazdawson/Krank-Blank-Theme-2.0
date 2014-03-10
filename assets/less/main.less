@@ -302,11 +302,8 @@ i {
 		border-bottom: 1px solid @gray-lighter;
 	}
 	.feat-post {
-		position: absolute;
-		top: 40px;
-		right: -50px;
-		width: 200px;
-		padding: 5px 0;
+		padding: 0 10px;
+		margin-right: @pad-sm;
 		background-color: @brand-primary;;
 		color: white;
 		letter-spacing: 2px;
@@ -314,12 +311,10 @@ i {
 		font-size: 10px;
 		text-transform: uppercase;
 		text-align: center;
-		-webkit-transform: rotate(45deg);
-		-moz-transform: rotate(45deg);
-		-ms-transform: rotate(45deg);
-		-o-transform: rotate(45deg);
-		filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476); /* IE6,IE7 */
-		-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)"; /* IE8 */
+		float: left;
+		span {
+			line-height: 40px;
+		}
 	}
 }
 
@@ -332,6 +327,24 @@ i {
 		.feat-img {
 			position: relative;
 			overflow: hidden;
+			.feat-post {
+				position: absolute;
+				top: 50px;
+				right: -38px;
+				width: 200px;
+				z-index: 100;
+				padding: 5px 0;
+				margin: 0;
+				-webkit-transform: rotate(45deg);
+				-moz-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				-o-transform: rotate(45deg);
+				filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476); /* IE6,IE7 */
+				-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)"; /* IE8 */
+				span {
+					line-height: 0;
+				}
+			}
 			img {
 				.img-responsive;
 			}

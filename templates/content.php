@@ -1,13 +1,11 @@
 <article <?php post_class(); ?>>
-	<?php 
-		$feat_post = get_post_meta($post->ID, '_krank_feat_post', true);
-		echo $feat_post;
-	?>
 	<?php if ( has_post_thumbnail() ) { ?>
 		<div class="feat-img">
-			<div class="feat-post">
-				Featured Post
-			</div>
+			<?php if(get_post_meta($post->ID, '_krank_feat_post', true)) { ?>
+				<div class="feat-post">
+					<span><i class="fa-star"></i> Featured Post</span>
+				</div>
+			<?php } // endif ?>
 			<a href="<?php the_permalink(); ?>" title="Read <?php the_title(); ?>">
 				<?php the_post_thumbnail('post-thumb'); ?>
 				<span class="img-more">

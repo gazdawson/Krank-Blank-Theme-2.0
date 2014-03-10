@@ -1,6 +1,11 @@
 <?php while (have_posts()) : the_post(); ?>
   <article <?php post_class(); ?>>
     <header>
+		<?php if(get_post_meta($post->ID, '_krank_feat_post', true)) { ?>
+			<div class="feat-post">
+				<span><i class="fa-star"></i> Featured Post</span>
+			</div>
+		<?php } // endif ?>
       <h1 class="entry-title"><?php the_title(); ?></h1>
       <?php get_template_part('templates/entry-meta'); ?>
     </header>
