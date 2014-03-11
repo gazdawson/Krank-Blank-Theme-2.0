@@ -115,9 +115,17 @@ var Krank = {
     init: function() {
       // JavaScript to be fired on the about us page
     }
+  },
+  // Single Blog Posts
+  single: {
+    init: function() {
+      // JavaScript to be fired on the single blog page
+	  
+	  // Social Sharing Buttons Fade in After Load
+	  $('.social-share').slideUp(300).delay(800).fadeIn(500);
+    }
   }
 };
-
 // The routing fires all common scripts, followed by the page specific scripts.
 // Add additional events for more control over timing e.g. a finalize event
 var UTIL = {

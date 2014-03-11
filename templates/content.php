@@ -3,7 +3,7 @@
 		<div class="feat-img">
 			<?php if(get_post_meta($post->ID, '_krank_feat_post', true)) { ?>
 				<div class="feat-post">
-					<span><i class="fa-star"></i> Featured Post</span>
+					<i class="fa-star"></i> <span>Featured Post <i class="fa-star"></i></span>
 				</div>
 			<?php } // endif ?>
 			<a href="<?php the_permalink(); ?>" title="Read <?php the_title(); ?>">

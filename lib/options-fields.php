@@ -293,6 +293,30 @@ $this->sections[] = array(
 	)
 );
 
+// Social Media
+$this->sections[] = array(
+	'icon' => 'el-icon-group',
+	'title' => __('Social Media', 'redux-framework-demo'),
+	'fields' => array(
+		// No Index Settings
+		array(
+			'id'=>'social_share',
+			'type' => 'checkbox',
+			'title' => __('Select which social share buttons you would like to enable', 'redux-framework-demo'), 
+			'subtitle' => __('Buttons will be displayed on all blog post pages', 'redux-framework-demo'),
+			'desc' => __('', 'redux-framework-demo'),
+			'options' => array(
+				'twitter' => 'Twitter',
+				'facebook' => 'Facebook',
+				'googlePlus' => 'Google+',
+				'pinterest' => 'Pinterest',
+				'linkedin' => 'Linkedin',
+			),
+		),
+	)
+);
+
+
 $this->sections[] = array(
 	'type' => 'divide',
 );
