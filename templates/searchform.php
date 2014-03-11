@@ -5,5 +5,6 @@
     <span class="input-group-btn">
       <button type="submit" class="search-submit btn btn-default"><?php _e('Search', 'roots'); ?></button>
     </span>
+	<i class="search-reveal fa-search"></i>
   </div>
 </form>

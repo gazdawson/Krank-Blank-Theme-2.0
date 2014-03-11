@@ -54,37 +54,35 @@ var Krank = {
 			});
 		}
 		
-        // Header Search Form Reveal
-        $('.search-reveal').click(function() {
-            var $search = $('.search-form');
-            if ($search.is(':visible')) {
-                // Slide away
-                $search.hide('fast');
-            }
-            else {
-                // Slide in
-                $search.show('slow');
-            }
-        });
+    // Header Search Form Reveal
+    $('.search-reveal').click(function() {
+        var $search = $('.navbar .search-field');
+        if ($search.is(':visible')) {
+            // Slide away
+            $search.hide(300).slideUp(300);
+        }
+        else {
+            // Slide in
+            $search.show(300).slideDown(500);
+        }
+    });
 		
-		// // Sticky Nav
-		// 	    $('.navbar').affix({
-		// 	      	offset: {
-		// 	        top: 170
-		// 	      	, bottom: function () {
-		// 	          return (this.bottom = $('.footer').outerHeight(true))
-		// 	        }
-		// 	      }
-		// 	    })
-		// // Sticky Nav Before Fire
-		// $('.navbar').on('affix.bs.affix', function () {
-		// 	$('.logo').animate({height: '30px'}, 300);
-		// 	$(this).animate({height: '30px'}, 1000);
-		// });
-		// // Sticky Nav After Fire
+		// Sticky Nav
+    $('.navbar').affix({
+      	offset: {
+        top: 100
+      	, bottom: function () {
+          return (this.bottom = $('.footer').outerHeight(true))
+        }
+      }
+    })
+		// Sticky Nav Before Fire
+		$('.navbar').on('affix.bs.affix', function () {
+			$(this).hide().fadeIn(300);
+		});
+		// Sticky Nav After Fire
 		// $('.navbar').on('affix-top.bs.affix', function () {
-		// 	$('.logo').animate({height: '70px'}, 300);
-		// 	$(this).animate({height: '30px'}, 'fast');
+		// Action after Fire
 		// });
 		
 		// Post image Hover
@@ -95,7 +93,21 @@ var Krank = {
 			$(this).find('.img-more').slideToggle('fast');
 		});
 		
-	// End Common Functions
+		// // Photo Gallery Modal
+		// $(function() {     
+		// 	$('a.thumbnail').click(function(e)
+		//     {
+		// 	    e.preventDefault();
+		//         var imgPath = $(this).data('imgpath');
+		//         $('#photo-modal img').attr('src', imgPath);
+		//         $("#photo-modal").modal('show');
+		//     });
+		//     $('img').on('click', function() {
+		//         $("#photo-modal").modal('hide')
+		//     });
+		// });
+		
+		// End Common Functions
     }
   },
   // Home page

@@ -3,7 +3,6 @@
  * @package Krank
 */
 
-#wpadminbar {display: none;}
 // ==========================================================================
 //    Bootstrap
 // ========================================================================== 
@@ -67,8 +66,6 @@
 //    Base
 // ==========================================================================
 body {
-	position: relative;
-	top: @navbar-height;
 	font-weight: @font-weight-base;
 }
 // Button and link transitions
@@ -88,21 +85,6 @@ i {
 .btn {
 	text-shadow: none !important;
 }
-
-.btn-outline {
-	.button-variant(@gray-dark, transparent, @gray-dark);
-	border-width: 2px;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-weight: 700;
-	font-size: 12px;
-	
-	&:hover {
-		border-color: @brand-primary;
-		color: @brand-primary;
-	}
-}
-
 // text selection color change
 ::selection {
 	background: lighten(@brand-primary,5%);
@@ -126,6 +108,7 @@ i {
 
 .navbar {
 	.container {}
+	margin-bottom: 0;
 	.navbar-header {
 		.make-sm-column(2,0);
 		.navbar-toggle {}
@@ -142,30 +125,52 @@ i {
 		}
 	}
 	.navbar-collapse {
-		.make-sm-column(9,0);
-		.navbar-nav {}
+		.make-sm-column(10,0);
+		.navbar-nav {
+			.pull-right;
+			.dropdown-menu {
+				.dropdown-menu-right;
+			}
+		}
 	}
-	.search {
-		.search-form {
-			display: none;
-			.navbar-vertical-align(50px);
-			float: left;
-			position: absolute;
-			width: 90%;
-			.input-group {
-				width: 100%;
-				.search-field {
-					height: 50px;
-				}
-				.input-group-btn {
-					display: none;
-				}
+	// Sticky Nav
+	&.affix {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		margin-top: 0;
+		z-index: 1030;
+	}
+	// Counter For Affix
+	&.affix + .breadcrumbs {
+		margin-top: @navbar-height;
+	}
+	// Header Search form
+	.search-form {
+		.navbar-vertical-align(50px);
+		.pull-right;
+		.hidden-xs;
+		.input-group {
+			position: inherit;
+			.search-field {
+				display: none;
+				position: absolute;
+				z-index: 1000;
+				margin: 0 147px 0;
+				right: 0;
+				height: 50px;
+				width: 89% !important;
+			}
+			.input-group-btn {
+				display: none;
 			}
 		}
 		.search-reveal {
+			.navbar-vertical-align(55px);
+			display: block;
 			font-size: 20px;
 			line-height: 34px;
-			.navbar-vertical-align(34px);
 			float: left;
 			padding: 0 @pad-sm;
 			border-left: 1px solid @navbar-default-border;
@@ -176,25 +181,12 @@ i {
 		}
 	}
 
-	// Sticky Nav
-	&.affix {
-		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
-		margin-top: 0;
-		z-index: 1030;
-	    background-color: red;
-	    .transition(background-color .3s linear);
-	    &.in {
-	      background-color: transparent;
-	    }
-	}
 	// Contact Modal
 	.contactModal {
-		.make-sm-column(1,0);
+		.btn-primary;
 		.navbar-vertical-align(34px);
 		.pull-right;
+		.hidden-xs;
 	}
 	
 	
@@ -227,6 +219,16 @@ i {
 }
 
 // ==========================================================================
+//    Search Form
+// ==========================================================================
+
+.search-form {
+	.search-reveal {
+		display: none;
+	}
+}
+
+// ==========================================================================
 //    Content
 // ========================================================================== 
 
@@ -236,7 +238,14 @@ i {
 //    Primary Content
 // ========================================================================== 
 
-.main { }
+.main { 
+	.page-header {
+		margin: 0 0 @pad-md 0;
+		h1 {
+			margin-top: 0;
+		}
+	}
+}
 
 //Gallery Shortcode 
 .gallery-row { padding: 15px 0; }
@@ -256,8 +265,10 @@ i {
 			border-bottom: 1px solid @gray-lighter;
 		}
 	}
-	.widget {
-		h3 { }
+	section:first-child {
+		h3 {
+			margin-top: 0;
+		}
 	}
 	.widget_recent_entries {
 		.post-date {
@@ -267,7 +278,6 @@ i {
 		}
 	}
 }
-
 // ==========================================================================
 //    Posts
 // ========================================================================== 
@@ -322,7 +332,8 @@ i {
 }
 
 // Archive Page
-.blog {
+.blog, 
+.search-results {
 	.hentry {
 		padding-bottom: @pad-md;
 		margin-bottom: @pad-md;
@@ -390,7 +401,7 @@ i {
 		}
 		.entry-summary {
 			.read-more {
-				.btn-outline;
+				.btn-primary;
 			}
 		}
 		footer { }
@@ -402,21 +413,28 @@ i {
 	.sharrre {
 		display: inline-block;
 		color: @gray;
-		margin: 0 10px 0 0;
+		margin: 0 @pad-sm 0 0;
+		-webkit-transition: color .3s ease-in-out;
+		-moz-transition: color .3s ease-in-out;
+		-ms-transition: color .3s ease-in-out;
+		-o-transition: color .3s ease-in-out;
+		transition: color .3s ease-in-out;
 		.box {
 			float:left;
 		}
 		.count {
 			position: relative;
+			top: -3px;
 			display: inline-block;
 			cursor: pointer;
 			padding: 0 5px;
 			margin-left: 10px;
-			border-left: 1px solid @gray;
+			border-left: 1px solid @gray-light;
+			line-height: 22px;
 		}
 		.share {
 			display: inline-block;
-			font-size: 24px;
+			font-size: 22px;
 			text-decoration:none;
 			cursor: pointer;
 			height: 40px;
@@ -571,6 +589,15 @@ i {
 // ==========================================================================
 //    Pages
 // ========================================================================== 
+
+.home {
+	.navbar {
+		// Home page Counter For Affix
+		&.affix + .wrap {
+			margin-top: @navbar-height;
+		}
+	}
+}
 
 // Contact Page
 .contact {
@@ -745,7 +772,6 @@ i {
 		.item{
 			img {}
 			.carousel-caption {
-				top: 40%;
 				.slideUp;
 				.carousel-title {
 					font-size: @font-size-h2;
@@ -861,7 +887,27 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 //    Media Queries
 // ========================================================================== 
 
-@media (max-width: @screen-sm-min) { 
+@media (max-width: @screen-sm-min) {
+	// Collapsed Navbar
+	.navbar {
+		.navbar-header {
+			margin-left: -15px !important;
+			margin-right: -15px !important;
+			padding-left: @pad-sm;
+		}
+		.navbar-collapse {
+			text-align: right;
+			.navbar-nav {
+				margin: @pad-sm 0 !important;
+			}
+		}
+	}
+	// Homepage Collapsed
+	.home {
+		.wrap {
+			padding-top: @pad-md;
+		}
+	}
 	// Blog Archive
 	.blog {
 		.feat-post {
@@ -895,6 +941,19 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 }
 
 @media (max-width: @screen-md-min) {
+	// Carousel Captions and Controls
+	.carousel {
+		.carousel-caption {
+			top: 20% !important;
+			left: 0;
+			right: 0;
+			width: 100%;
+		}
+		.carousel-control {
+			display: none;
+		}
+	}
+	// Social Sharing Hide count
 	.social-share {
 		.count {
 			display: none !important;
@@ -903,6 +962,16 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 }
 
 @media (max-width: @screen-lg-min) {
+	// Carousel Captions and Controls
+	.carousel {
+		.carousel-caption {
+			top: 35%;
+		}
+		.carousel-control span {
+			line-height: 330px;
+		}
+	}
+	// Blog Archive Pages
 	.blog {
 		.img-more {
 			line-height: 250px !important;
@@ -919,7 +988,15 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 			}
 		}
 	}
+}
 
+@media (min-width: @screen-lg-min) {
+	// Carousel Captions and Controls
+	.carousel {
+		.carousel-caption {
+			top: 35%;
+		}
+	}
 }
 
 // ==========================================================================
