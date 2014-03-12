@@ -10,7 +10,7 @@
       </button>
 	  <?php 
 	  	if($krank['logo']['url']) {
-	  		$background = 'background: url(\''.$krank['logo']['url'].'\');';
+	  		$background = 'background: url(\''.$krank['logo']['url'].'\') no-repeat;';
 	  	}
 	  ?>
 	  <a class="navbar-brand" href="<?php echo home_url(); ?>/" title="<?php bloginfo('name'); ?>" style="<?php echo $background; ?>">

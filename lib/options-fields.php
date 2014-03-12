@@ -121,7 +121,17 @@ $this->sections[] = array(
 			'title' => __('Business Logo', 'redux-framework-demo'),
 			'desc'=> __('Upload your logo JPG, PNG or GIF format accepted', 'redux-framework-demo'),
 			'subtitle' => __('', 'redux-framework-demo'),
-		),	
+		),
+		// Website Body Custom Background
+		array(
+			'id'=>'body-bgd',
+			'type' => 'background',
+			'output' => array('body'),
+			'title' => __('Body Background', 'redux-framework-demo'), 
+			'subtitle' => __('Body background with image, color, etc.', 'redux-framework-demo'),
+			//'default' => '#FFFFFF',
+			//'validate' => 'color',
+		),		
 	)
 );
 

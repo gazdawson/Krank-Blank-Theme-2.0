@@ -142,50 +142,48 @@ function krank_breadcrumbs() {
     $output .= 
 		'<div class="breadcrumbs">
 			<div class="container">
-				<span class="page-title">'.get_the_title().'</span>
-				<ul class="breadcrumb">
-					<span>You are Here:</span>';
+				<ul class="breadcrumb">';
 	// Master Page
     $output .= '<li><a href="'.get_option('home').'" title="'.get_option('blogname').' | '.get_option('blogdescription').'">Home</a></li>';
 	// Categories and Single
     if (is_category() || is_single()) {
-		$category = get_the_category();
-        $cat_name = $category[0]->cat_name;
-		$cat_link = $category[0]->slug;
+			$category = get_the_category();
+	    $cat_name = $category[0]->cat_name;
+			$cat_link = $category[0]->slug;
 		
-		$output .= '<li><a href="/category/'.$cat_link.'" title="View '.$cat_name.' Category">'.$cat_name.'</a></li>';
+			$output .= '<li><a href="/category/'.$cat_link.'" title="View '.$cat_name.' Category">'.$cat_name.'</a></li>';
 		
         if (is_single()) {
             $output .= '<li>'.get_the_title().'</li>';
         }
     }
-	if (is_page()) {
-		$output .= '<li>'.get_the_title().'</li>';
-    }
+		if (is_page()) {
+			$output .= '<li>'.get_the_title().'</li>';
+	  }
     elseif (is_tag()) {
-		$tag = single_tag_title("", false);
-		$output .= '<li>'.$tag.'</li>';
-	}
+			$tag = single_tag_title("", false);
+			$output .= '<li>'.$tag.'</li>';
+		}
     elseif (is_day()) {
-		$output .= '<li>Archive for'.get_the_time('F jS, Y').'</li>';
-	}
+			$output .= '<li>Archive for'.get_the_time('F jS, Y').'</li>';
+		}
     elseif (is_month()) {
-		$output .= '<li>Archive for '.get_the_time('F, Y').'</li>';
-	}
+			$output .= '<li>Archive for '.get_the_time('F, Y').'</li>';
+		}
     elseif (is_year()) {
-		$output .= '<li>Archive for '.get_the_time('Y').'</li>';
-	}
+			$output .= '<li>Archive for '.get_the_time('Y').'</li>';
+		}
     elseif (is_author()) {
-		$output .= '<li>Author Archive</li>';
-	}
+			$output .= '<li>Author Archive</li>';
+		}
     elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-		$output .= '<li>Blog Archives</li>';
-	}
+			$output .= '<li>Blog Archives</li>';
+		}
     elseif (is_search()) {
-		$search = get_search_query();
-		$output .= '<li>Search Results For "'.$search.'"</li>';
-	}
-   $output .= '</ul></div></div><!--/.breadcrumbs-->';
+			$search = get_search_query();
+			$output .= '<li>Search Results For "'.$search.'"</li>';
+		}
+   		$output .= '</ul></div></div><!--/.breadcrumbs-->';
    
    // echo the breadcrumb
    if (!is_front_page()){

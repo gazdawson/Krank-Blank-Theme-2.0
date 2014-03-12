@@ -44,7 +44,7 @@ var Krank = {
 		// Bootstrap Navigation Drop Down on Rollover
 		if( $(window).width() > 767 ) {
 			$('ul.nav li.dropdown').mouseenter(function(){
-				 $(this).children('ul.dropdown-menu').slideDown('300ms')
+				 $(this).children('ul.dropdown-menu').slideDown('300ms');
 			});
 			$('li.dropdown').mouseleave(function(){
 				$('ul.dropdown-menu').fadeOut('300ms');
@@ -70,7 +70,7 @@ var Krank = {
 		// Sticky Nav
     $('.navbar').affix({
       	offset: {
-        top: 100
+        top: 70
       	, bottom: function () {
           return (this.bottom = $('.footer').outerHeight(true))
         }
@@ -82,6 +82,7 @@ var Krank = {
 		});
 		// Sticky Nav After Fire
 		// $('.navbar').on('affix-top.bs.affix', function () {
+		// 	$(this).fadeOut(300);
 		// });
 		
 		// Post image Hover

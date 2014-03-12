@@ -6625,13 +6625,16 @@ i {
   }
 }
 .navbar .navbar-header .navbar-brand {
+  display: block;
   background: url('../img/logo@2x.png');
-  background-size: 100% !important;
+  background-size: auto 100% !important;
+  background-position: center center;
   background-repeat: no-repeat;
+  height: 40px;
+  width: 100%;
+  margin-left: 0;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 0;
-  width: 140px;
 }
 .navbar .navbar-header .navbar-brand span {
   font: 0/0 a;
@@ -6672,8 +6675,8 @@ i {
   margin-top: 70px;
 }
 .navbar .search-form {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   float: right !important;
   float: right;
 }
@@ -6689,23 +6692,25 @@ i {
   position: inherit;
 }
 .navbar .search-form .input-group .search-field {
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: none;
   position: absolute;
   z-index: 1000;
   margin: 0 147px 0;
   right: 0;
-  height: 50px;
+  top: 5px;
+  height: 60px;
   width: 89% !important;
 }
 .navbar .search-form .input-group .input-group-btn {
   display: none;
 }
 .navbar .search-form .search-reveal {
-  margin-top: 7.5px;
-  margin-bottom: 7.5px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   display: block;
   font-size: 20px;
-  line-height: 34px;
   float: left;
   padding: 0 15px;
   border-left: 1px solid #ecf0f1;
@@ -6816,20 +6821,13 @@ fieldset[disabled] .navbar .contactModal.active {
   }
 }
 .breadcrumbs {
-  background-color: #fbfcfc;
+  background-color: transparent;
   color: #b5bcbd;
   font-size: 12px;
   border-bottom: 1px solid #ecf0f1;
   margin-bottom: 30px;
 }
-.breadcrumbs .page-title {
-  float: left !important;
-  float: left;
-  padding: 5px 0;
-}
 .breadcrumbs .breadcrumb {
-  float: right !important;
-  float: right;
   margin: 0;
 }
 .breadcrumbs .breadcrumb span {
