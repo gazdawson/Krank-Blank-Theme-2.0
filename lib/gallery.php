@@ -44,7 +44,7 @@ function roots_gallery($attr) {
     'size'       => 'thumbnail',
     'include'    => '',
     'exclude'    => '',
-    'link'       => ''
+    'link'       => 'file'
   ), $attr));
 
   $id = intval($id);
@@ -100,7 +100,7 @@ function roots_gallery($attr) {
     $output .= '<div class="' . $grid .'">' . $image;
 
     if (trim($attachment->post_excerpt)) {
-      $output .= '<div class="caption hidden">' . wptexturize($attachment->post_excerpt) . '</div>';
+      $output .= '<div class="caption">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
 
     $output .= '</div>';
@@ -124,7 +124,7 @@ if (current_theme_supports('bootstrap-gallery')) {
  */
 function roots_attachment_link_class($html) {
   $postid = get_the_ID();
-  $html = str_replace('<a', '<a class="thumbnail img-thumbnail"', $html);
+  $html = str_replace('<a href=', '<a class="thumbnail img-thumbnail" data-toggle="modal" href="#" data-imgpath=', $html);
   return $html;
 }
 add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);

@@ -93,19 +93,19 @@ var Krank = {
 			$(this).find('.img-more').slideToggle('fast');
 		});
 		
-		// // Photo Gallery Modal
-		// $(function() {     
-		// 	$('a.thumbnail').click(function(e)
-		//     {
-		// 	    e.preventDefault();
-		//         var imgPath = $(this).data('imgpath');
-		//         $('#photo-modal img').attr('src', imgPath);
-		//         $("#photo-modal").modal('show');
-		//     });
-		//     $('img').on('click', function() {
-		//         $("#photo-modal").modal('hide')
-		//     });
-		// });
+		// Photo Gallery Modal
+		$(function() {     
+			$('a.thumbnail').click(function(e)
+		    {
+			    e.preventDefault();
+		        var imgPath = $(this).data('imgpath');
+		        $('#photo-modal img').attr('src', imgPath);
+		        $("#photo-modal").modal('show');
+		    });
+		    $('img').on('click', function() {
+		        $("#photo-modal").modal('hide')
+		    });
+		});
 		
 		// End Common Functions
     }

@@ -6848,7 +6848,48 @@ fieldset[disabled] .navbar .contactModal.active {
   margin-top: 0;
 }
 .gallery-row {
-  padding: 15px 0;
+  padding: 15px 0 0 0;
+}
+.gallery-row div {
+  text-align: center;
+}
+.gallery-row div .thumbnail {
+  padding: 0;
+  margin-bottom: 0;
+  border-color: #bdc3c7;
+  display: inline-block !important;
+}
+.gallery-row div .caption {
+  padding: 5px;
+  width: 152px;
+  margin: 0 auto 15px auto;
+}
+#photo-modal .modal-dialog {
+  text-align: center;
+  display: table;
+  padding: 0;
+  margin-top: 10%;
+}
+#photo-modal .modal-dialog .thumbnail {
+  border-color: #ecf0f1;
+}
+#photo-modal .modal-dialog img {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+#photo-modal .modal-dialog .close {
+  width: 25px;
+  height: 25px;
+  opacity: .8;
+  position: relative;
+  top: 25px;
+}
+#photo-modal .modal-dialog .close:hover {
+  color: #49c9b0;
 }
 .sidebar ul {
   margin: 0;

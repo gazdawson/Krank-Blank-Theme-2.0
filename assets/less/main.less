@@ -248,7 +248,51 @@ i {
 }
 
 //Gallery Shortcode 
-.gallery-row { padding: 15px 0; }
+.gallery-row { 
+	padding: floor(@grid-gutter-width / 2) 0 0 0;
+	
+	div {
+		text-align: center;
+		
+		.thumbnail {
+			padding: 0;
+			margin-bottom: 0;
+			border-color: @silver;
+			display: inline-block !important;
+		}
+		.caption {
+			padding: 5px;
+			width: 152px;
+			margin: 0 auto floor(@grid-gutter-width / 2) auto;
+		}
+	}
+}
+
+#photo-modal .modal-dialog {
+	text-align: center;
+	display: table;
+	padding: 0;
+	margin-top: 10%;
+	.thumbnail {
+		border-color: @gray-lighter;
+	}
+	img {
+		-webkit-border-radius: @border-radius-base;
+		-moz-border-radius: @border-radius-base;
+		border-radius: @border-radius-base;
+		.img-responsive;
+	}
+	.close {
+		width: 25px;
+		height: 25px;
+		opacity: .8;
+		position: relative;
+		top: 25px;
+		&:hover {
+			color: @brand-primary;
+		}
+	}
+}
 
 // ==========================================================================
 //    Sidebar

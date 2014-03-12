@@ -20,21 +20,6 @@
 	Design &amp; website build by: <a href="http://www.krankcreative.co.uk" title="See What Krank Creative Can Do For You! Web Design, Graphic Design, Marketing &amp; E-commerce | Kendal, Cumbria"><span>Krank Creative </span>| Website Design, Marketing &amp; E-commerce Solutions | Kendal, Cumbria.</a>
 </div>
 
-<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="ConactModal" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="ConactModal">Contact Us</h4>
-				<p>Please use the contact form below to send us a message.</p>
-				<?php echo do_shortcode('[contact-form]'); ?>
-			</div>
-			<div class="modal-footer">
-				<p>Alternatively use one of our other forms of contact to get in touch</p>
-				<?php echo do_shortcode('[contact]'); ?>
-			</div>
-		</div>
-	</div>
-</div><!--/#contactModal-->
+<?php get_template_part('templates/modals'); // Custom Modals?>
 
 <?php wp_footer(); ?>
