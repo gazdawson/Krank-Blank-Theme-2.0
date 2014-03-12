@@ -6891,6 +6891,14 @@ fieldset[disabled] .navbar .contactModal.active {
 #photo-modal .modal-dialog .close:hover {
   color: #49c9b0;
 }
+@media (max-width: 767px) {
+  .sidebar,
+  tr.sidebar,
+  th.sidebar,
+  td.sidebar {
+    display: none !important;
+  }
+}
 .sidebar ul {
   margin: 0;
   padding: 0;
@@ -7280,6 +7288,35 @@ fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
 }
 #comments .avatar {
   border-radius: 50%;
+}
+#to-top {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  bottom: 60px;
+  right: 60px;
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgba(78, 87, 88, 0.8);
+  color: white;
+}
+@media (max-width: 767px) {
+  #to-top,
+  tr#to-top,
+  th#to-top,
+  td#to-top {
+    display: none !important;
+  }
+}
+#to-top:hover {
+  background-color: rgba(73, 201, 176, 0.8);
 }
 .content-info {
   background: #fff;

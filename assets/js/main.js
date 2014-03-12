@@ -82,7 +82,6 @@ var Krank = {
 		});
 		// Sticky Nav After Fire
 		// $('.navbar').on('affix-top.bs.affix', function () {
-		// Action after Fire
 		// });
 		
 		// Post image Hover
@@ -105,6 +104,20 @@ var Krank = {
 		    $('img').on('click', function() {
 		        $("#photo-modal").modal('hide')
 		    });
+		});
+		
+		// to top link
+		$(window).scroll(function(){
+			if($(this).scrollTop() > 100) {
+				$('#to-top').fadeIn(300);
+			} else {
+				$('#to-top').fadeOut(300);
+			}
+		});
+		// Animate Scroll to Top 
+		$('#to-top').click(function(event) {
+			event.preventDefault();
+			$('html, body').animate({scrollTop: 0}, 300);
 		});
 		
 		// End Common Functions

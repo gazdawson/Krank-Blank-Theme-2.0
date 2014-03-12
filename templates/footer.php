@@ -1,3 +1,4 @@
+<a href="#" id="to-top"><i class="fa-angle-up"></i></a>
 <footer class="content-info" role="contentinfo">
   <div class="footer container">
 	<div class="row">
