@@ -27,7 +27,7 @@ function krank_page_meta() {
 	global $post;
 	global $krank;
 
-	$meta = '<!-- Krank Search Engine Optimisation Pack -->';
+	$meta = '<!-- Krank Search Engine Optimisation -->';
 	
 	// Custom seo meta
 	$meta_desc = get_post_meta($post->ID, '_krank_seo_desc', true);
@@ -40,7 +40,7 @@ function krank_page_meta() {
 	endwhile;
 	
 	// String Work on page excerpt
-	if (is_page() && $page_content) {
+	if ($page_content) {
 		$excerpt = strip_tags($page_content);
 		$meta_excerpt = substr($excerpt , 0, strpos($excerpt, '. ', 157));
 	}
@@ -55,7 +55,7 @@ function krank_page_meta() {
 		$meta .= '<meta name="description" content="'.$meta_desc.'">';
 	}
 	if (!$meta_desc) {
-		$meta .= '<meta name="description" content="'.$meta_excerpt.'.">';
+		$meta .= '<meta name="description" content="'.$meta_excerpt.'">';
 	}
 	
 	// Meta keywords
@@ -67,8 +67,12 @@ function krank_page_meta() {
 		$meta .= '<meta name="keywords" content="'.$keyword_gen.'">';
 	}
 	
+	// Remove on posts if no custom meta
+	// if (is_singular() && !$meta_key && !$meta_desc) {
+	// 	$meta = '';
+	// }
+	
 	echo $meta;
-	print_r();
 }
 // Add new Krank meta to head
 add_action('wp_head', 'krank_page_meta');
@@ -79,14 +83,13 @@ function krank_search_index() {
 	global $krank;
 	$search_index = $krank['search_index'];
 	$no_index = $krank['no_index'];
-	$pages_noindex = $krank['pages_no_index'];
-	$post_noindex = $krank['post_type_index'];
-	
 	$cats = $no_index['cats'];
 	$date_arch = $no_index['date_arch'];
 	$auth_arch = $no_index['auth_arch'];
 	$tag_arch = $no_index['tag_arch'];
 	$search = $no_index['search'];
+	$pages_noindex = $krank['pages_no_index'];
+	$post_noindex = $krank['post_type_index'];
 	
 	// Output vars;
 	$yes = '<meta name="robots" content="index,follow">';
@@ -104,7 +107,7 @@ function krank_search_index() {
 	if( $pages_noindex && is_page($pages_noindex) ) {
 		$output = $no;
 	}
-	if( is_singular( $post_noindex ) ) {
+	if( $post_noindex && is_singular( $post_noindex ) ) {
 		$output = $no;
 	}
 	// check for specific page types
@@ -130,6 +133,63 @@ function krank_search_index() {
 remove_action('wp_head', 'noindex', 1);
 // Add Krank Meta Robots
 add_action('wp_head', 'krank_search_index');
+
+// Breadcrumbs to pages
+function krank_breadcrumbs() {
+	global $krank;
+	$breadcrumb = $krank['breadcrumbs'];
+	
+    $output .= 
+		'<div class="breadcrumbs">
+			<div class="container">
+				<ul class="breadcrumb">';
+	// Master Page
+    $output .= '<li><a href="'.get_option('home').'" title="'.get_option('blogname').' | '.get_option('blogdescription').'">Home</a></li>';
+	// Categories and Single
+    if (is_category() || is_single()) {
+			$category = get_the_category();
+	    $cat_name = $category[0]->cat_name;
+			$cat_link = $category[0]->slug;
+		
+			$output .= '<li><a href="/category/'.$cat_link.'" title="View '.$cat_name.' Category">'.$cat_name.'</a></li>';
+		
+        if (is_single()) {
+            $output .= '<li>'.get_the_title().'</li>';
+        }
+    }
+		if (is_page()) {
+			$output .= '<li>'.get_the_title().'</li>';
+	  }
+    elseif (is_tag()) {
+			$tag = single_tag_title("", false);
+			$output .= '<li>'.$tag.'</li>';
+		}
+    elseif (is_day()) {
+			$output .= '<li>Archive for'.get_the_time('F jS, Y').'</li>';
+		}
+    elseif (is_month()) {
+			$output .= '<li>Archive for '.get_the_time('F, Y').'</li>';
+		}
+    elseif (is_year()) {
+			$output .= '<li>Archive for '.get_the_time('Y').'</li>';
+		}
+    elseif (is_author()) {
+			$output .= '<li>Author Archive</li>';
+		}
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+			$output .= '<li>Blog Archives</li>';
+		}
+    elseif (is_search()) {
+			$search = get_search_query();
+			$output .= '<li>Search Results For "'.$search.'"</li>';
+		}
+   		$output .= '</ul></div></div><!--/.breadcrumbs-->';
+   
+   // echo the breadcrumb
+   if (!is_front_page()){
+	   echo $output;
+   }
+}
 
 // Krank XML Site Map Generator
 function krank_build_sitemap() {

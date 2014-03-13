@@ -19,9 +19,18 @@ function contact_form_get_the_ip() {
 
 // the shortcode
 function contact_form_sc($atts) {
+	global $krank;
+	
+	if ($krank['contact_email']) {
+		$contact_email = $krank['contact_email'];
+	}
+	else {
+		$contact_email = get_bloginfo('admin_email');
+	}
+	
 	extract(shortcode_atts(array(
 		"title" => '',
-		"email" => get_bloginfo('admin_email'),
+		"email" => $contact_email,
 		"subject" => '',
 		"label_name" => 'Full Name*',
 		"label_number" => 'Contact Number*',
@@ -60,7 +69,7 @@ function contact_form_sc($atts) {
 
 		if ($error == false) {
 			$email_subject = "[" . get_bloginfo('name') . "] " . $form_data['subject'];
-			$email_message = $form_data['your_number'] . $form_data['message'] . "\n\nIP: " . contact_form_get_the_ip();
+			$email_message = "Tel: ".$form_data['your_number']."\n Email: ".$form_data['email']."\n". $form_data['message'] . "\n\nIP: " . contact_form_get_the_ip();
 			$headers  = "From: ".$form_data['your_name']." <".$form_data['email'].">\n";
 			$headers .= "Content-Type: text/plain; charset=UTF-8\n";
 			$headers .= "Content-Transfer-Encoding: 8bit\n";
@@ -71,10 +80,10 @@ function contact_form_sc($atts) {
 	}
 
 	if($result == $success) {
-		$info = '<div class="contact-form-info success"><i class="fa fa-check-circle"></i> '.$result.'</div>';
+		$info = '<div class="contact-form-info success" style="display: none;"><i class="fa-check-circle"></i> '.$result.'</div>';
 	}
 	if($result == $error_empty || $result == $error_noemail) {
-		$info = '<div class="contact-form-info error"><i class="fa fa-exclamation-circle"></i> '.$result.'</div>';
+		$info = '<div class="contact-form-info error" style="display: none;"><i class="fa-exclamation-circle"></i> '.$result.'</div>';
 	}
 	
 	if($title != '') {
@@ -88,17 +97,18 @@ function contact_form_sc($atts) {
 			<input class="form-control" type="text" name="your_name" id="cf_name" size="50" maxlength="50" placeholder="'.$label_name.'" value="'.$form_data['your_name'].'" />
 			<input class="form-control" type="email" name="email" id="cf_email" size="50" maxlength="50" placeholder="'.$label_email.'" value="'.$form_data['email'].'" />
 			<input class="form-control" type="text" name="your_number" id="cf_number" size="50" maxlength="50" placeholder="'.$label_number.'" value="'.$form_data['your_number'].'" />
-			<input class="form-control" type="text" name="subject" id="cf_subject" size="50" maxlength="50" placeholder="'.$label_subject.'" value="'.$subject.$form_data['subject'].'" />
 			<textarea class="form-control" name="message" id="cf_message" cols="50" rows="15" placeholder="'.$label_message.'">'.$form_data['message'].'</textarea>
 		</div>
 		<div class="contact-submit">
-			<button class="btn" type="submit" name="send" id="cf_send">'.$label_submit.'</button>
+			<button class="btn btn-outline" type="submit" name="send" id="cf_send">'.$label_submit.'</button>
+			<span class="small">required*</span>
 		</div>
 	</form>';
 	
 	if($sent == true) {
-		return $info;
+		return $info.$email_form;
 	} else {
 		return $info.$email_form;
 	}
-} add_shortcode('contact-form', 'contact_form_sc');
+} 
+add_shortcode('contact-form', 'contact_form_sc');

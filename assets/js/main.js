@@ -44,7 +44,7 @@ var Krank = {
 		// Bootstrap Navigation Drop Down on Rollover
 		if( $(window).width() > 767 ) {
 			$('ul.nav li.dropdown').mouseenter(function(){
-				 $(this).children('ul.dropdown-menu').slideDown('300ms')
+				 $(this).children('ul.dropdown-menu').slideDown('300ms');
 			});
 			$('li.dropdown').mouseleave(function(){
 				$('ul.dropdown-menu').fadeOut('300ms');
@@ -53,8 +53,75 @@ var Krank = {
 				$(this).fadeOut('300ms');
 			});
 		}
-	
-	// End Coomon Functions
+		
+    // Header Search Form Reveal
+    $('.search-reveal').click(function() {
+        var $search = $('.navbar .search-field');
+        if ($search.is(':visible')) {
+            // Slide away
+            $search.hide(300).slideUp(300);
+        }
+        else {
+            // Slide in
+            $search.show(300).slideDown(500);
+        }
+    });
+		
+		// Sticky Nav
+    $('.navbar').affix({
+      	offset: {
+        top: 100
+      	, bottom: function () {
+          return (this.bottom = $('.footer').outerHeight(true))
+        }
+      }
+    })
+		// Sticky Nav Before Fire
+		$('.navbar').on('affix.bs.affix', function () {
+			$(this).hide().fadeIn(300);
+		});
+		// Sticky Nav After Fire
+		// $('.navbar').on('affix-top.bs.affix', function () {
+		// 	$(this).fadeOut(300);
+		// });
+		
+		// Post image Hover
+		$('.feat-img a').mouseenter(function() {
+			$(this).find('.img-more').slideToggle('fast');
+		});
+		$('.feat-img a').mouseleave(function() {
+			$(this).find('.img-more').slideToggle('fast');
+		});
+		
+		// Photo Gallery Modal
+		$(function() {     
+			$('a.thumbnail').click(function(e)
+		    {
+			    e.preventDefault();
+		        var imgPath = $(this).data('imgpath');
+		        $('#photo-modal img').attr('src', imgPath);
+		        $("#photo-modal").modal('show');
+		    });
+		    $('img').on('click', function() {
+		        $("#photo-modal").modal('hide')
+		    });
+		});
+		
+		// to top link
+		$(window).scroll(function(){
+			if($(this).scrollTop() > 100) {
+				$('#to-top').fadeIn(300);
+			} else {
+				$('#to-top').fadeOut(300);
+			}
+		});
+		// Animate Scroll to Top 
+		$('#to-top').click(function(event) {
+			event.preventDefault();
+			$('html, body').animate({scrollTop: 0}, 300);
+		});
+		
+		// End Common Functions
     }
   },
   // Home page
@@ -74,9 +141,17 @@ var Krank = {
     init: function() {
       // JavaScript to be fired on the about us page
     }
+  },
+  // Single Blog Posts
+  single: {
+    init: function() {
+      // JavaScript to be fired on the single blog page
+	  
+	  // Social Sharing Buttons Fade in After Load
+	  $('.social-share').slideUp(300).delay(800).fadeIn(500);
+    }
   }
 };
-
 // The routing fires all common scripts, followed by the page specific scripts.
 // Add additional events for more control over timing e.g. a finalize event
 var UTIL = {

@@ -58,16 +58,18 @@ function krank_contact( $atts ) {
 		$contact_title = '<h4>'.$title.'</h4>';
 	}
 	foreach( $krank_opt as $key => $value ) {
-		if( $key == 'email') {
-			$contact_dd = '<dd><a href="mailto:'.$value.'">'.$value.'</a></dd>';
+		if( $value ) {
+			if( $key == 'email') {
+				$contact_dd = '<dd><a href="mailto:'.$value.'">'.$value.'</a></dd>';
+			}
+			elseif( $key == 'telephone' || $key == 'mobile' ) {
+				$contact_dd = '<dd><a href="tel:'.$value.'">'.$value.'</a></dd>';
+			}
+			else {
+				$contact_dd = '<dd>'.$value.'</dd>';
+			}
+			$contact_lines .= '<dt><abbr title="'.ucFirst($key).'">'.substr($key,0,1).'</abbr></dt>'.$contact_dd;
 		}
-		elseif( $key == 'telephone' || $key == 'mobile' ) {
-			$contact_dd = '<dd><a href="tel:'.$value.'">'.$value.'</a></dd>';
-		}
-		else {
-			$contact_dd = '<dd>'.$value.'</dd>';
-		}
-		$contact_lines .= '<dt><abbr title="'.ucFirst($key).'">'.substr($key,0,1).'</abbr></dt>'.$contact_dd;
 	}
 	
 	// Address HTML

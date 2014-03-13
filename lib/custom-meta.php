@@ -69,6 +69,24 @@ function krank_metaboxes( array $meta_boxes ) {
 		),
 	);
 	
+	// Krank Featured Blog Post
+	$meta_boxes['feat_post'] = array(
+		'id'         => 'feat_post',
+		'title'      => 'Featured Post',
+		'pages'      => array( 'post', ), // Post type
+		'context'    => 'side',
+		'priority'   => 'low',
+		'show_names' => false, // Show field names on the left
+		'fields'     => array(
+			array(
+				'name' => 'Featured Post',
+				'desc' => 'Feature this post',
+				'id'   => $prefix . 'feat_post',
+				'type' => 'checkbox',
+			),
+		),
+	);
+	
 	
 
 	$meta_boxes['test_metabox'] = array(

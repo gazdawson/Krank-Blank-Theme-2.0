@@ -39,10 +39,10 @@ function krank_carousel($slide_type, $id, $controls, $indicators, $captions, $tr
 		if ($controls != false) {
 			$control =
 		        '<a class="left carousel-control" href="#'.$id.'" data-slide="prev">
-			        <span class="fa fa-angle-left"></span>
+			        <span class="krank-ico fa-caret-left"></span>
 		        </a>
 		        <a class="right carousel-control" href="#'.$id.'" data-slide="next">
-					<span class="fa fa-angle-right"></span>
+					<span class="krank-ico fa-caret-right"></span>
 		        </a>';
 		}
 		
@@ -150,4 +150,42 @@ function krank_structured_business() {
 		
 	// Return Output
 	return $business_info.$location;
+}
+
+// More link Button instead of ...continued
+function excerpt_read_more( $more ) {
+	return '';
+}
+add_filter( 'excerpt_more', 'excerpt_read_more' );
+
+// Social Sharing Buttons
+function krank_social_share() {
+	global $krank;
+	$social_btns = $krank['social_share'];
+	
+	foreach($social_btns as $key => $value) {
+		if ($key == 'googlePlus'){
+			$icon = 'google-plus';
+		}
+		else {
+			$icon = $key;
+		}
+		$social .= '<div id="'.$key.'" data-url="'.get_permalink($post->ID).'" data-text="Check out &quot;'.get_the_title().'&quot; on '.get_option('blogname').' | " data-title="Share"></div>';
+		$social_jquery .= '
+			$(\'#'.$key.'\').sharrre({
+			  share: {
+			    '.$key.': true
+			  },
+			  template: \'<i class="fa-'.$icon.' share"></i><span class="count" href="#">{total}</span>\',
+			  enableHover: true,
+			  enableTracking: true,
+			  urlCurl: \'\',
+			  click: function(api, options){
+			    api.simulateClick();
+			    api.openPopup(\''.$key.'\');
+			  }
+			});';
+	}
+	
+	echo $social . '<script>'.$social_jquery.'</script>';
 }
