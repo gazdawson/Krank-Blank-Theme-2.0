@@ -20,6 +20,11 @@ function contact_form_get_the_ip() {
 // the shortcode
 function contact_form_sc($atts) {
 	global $krank;
+	$result = '';
+	$form_title = '';
+	$form_data = '';
+	$sent = '';
+	$info = '';
 	
 	if ($krank['contact_email']) {
 		$contact_email = $krank['contact_email'];

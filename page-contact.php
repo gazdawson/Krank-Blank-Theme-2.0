@@ -5,7 +5,10 @@
  */
 ?>
 
-<div id="map"></div>
+<?php if (!empty($krank['location']['latitude']) && !empty($krank['location']['longitude'])) { ?>
+	<div id="map"></div>
+<?php } // endif ?>
+
 <div class="container header">
 	<?php get_template_part('templates/page', 'header'); ?>
 </div>
@@ -25,12 +28,14 @@
 
 <?php
 	// Load Krank Options
-	$location = $krank['location']['latitude'].', '.$krank['location']['longitude'];
-	$name = $krank['name'];
-	foreach($krank['contact'] as $add) {
-		$address .= $add.'<br/>';
-	}
-	$infoWindow = '<div class="infoWindow"><h4>'.$name.'</h4>'.'<p>'.$address.'</p></div>';
+	$address = '';
+	if (!empty($krank['location']['latitude']) && !empty($krank['location']['longitude'])) {
+		$location = $krank['location']['latitude'].', '.$krank['location']['longitude'];
+		$name = $krank['name'];
+		foreach($krank['contact'] as $add) {
+			$address .= $add.'<br/>';
+		}
+		$infoWindow = '<div class="infoWindow"><h4>'.$name.'</h4>'.'<p>'.$address.'</p></div>';
 ?>
 
 <script>
@@ -64,3 +69,5 @@
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+<?php } // endif ?>

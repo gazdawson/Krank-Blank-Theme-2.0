@@ -7,6 +7,7 @@
 // Page Meta
 function krank_google_analytics() {
 	global $krank;
+	$tracking = '';
 	// get krnak options
 	$ga_on = $krank['ga'];
 	$ga_code = $krank['ga_code'];

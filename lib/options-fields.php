@@ -17,7 +17,7 @@ $this->sections[] = array(
 			'title' => __('Business Name', 'redux-framework-demo'),
 			'subtitle' => __('Please enter your business name', 'redux-framework-demo'),
 			'desc' => __('', 'redux-framework-demo'),
-			'default' => '',
+			'default' => 'Business Name',
 			'class' => 'small-text'
 		),
 		// Business Address
@@ -36,11 +36,11 @@ $this->sections[] = array(
 				'addressCountry'=>'Country'
 			),
 			'default' => array(
-				'streetAddress'=>'',
-				'addressLocality'=>'',
-				'addressRegion'=>'',
-				'postalCode'=>'',
-				'addressCountry'=>''
+				'streetAddress'=>'Address 1',
+				'addressLocality'=>'Town/City',
+				'addressRegion'=>'State/County',
+				'postalCode'=>'Zip/Post Code',
+				'addressCountry'=>'Country'
 			),
 		),
 		// Business Location
@@ -74,9 +74,9 @@ $this->sections[] = array(
 				'email'=>'Email'
 			),
 			'default' => array(
-				'telephone'=>'',
-				'faxNumber'=>'',
-				'email'=>''
+				'telephone'=>'Telephone',
+				'faxNumber'=>'Fax No',
+				'email'=>'Email'
 			),
 		),
 		// Business Open Hours
@@ -165,25 +165,15 @@ $this->sections[] = array(
 				'search' => 'Use noindex For Search Results'
 			),
 		),
-		// No Index Pages
+		// Global Kewords
 		array(
-			'id'=>'pages_no_index',
-			'type' => 'select',
-			'data' => 'pages',
-			'multi' => true,
-			'title' => __('Noindex specific pages', 'redux-framework-demo'), 
+			'id'=>'global_key',
+			'type' => 'text',
+			'title' => __('Global Keywords', 'redux-framework-demo'),
 			'subtitle' => __('', 'redux-framework-demo'),
-			'desc' => __('', 'redux-framework-demo'),
-		),	
-		// No index post types
-		array(
-			'id'=>'post_type_index',
-			'type' => 'select',
-			'data' => 'post_type',
-			'multi' => true,
-			'title' => __('Noindex specific post types', 'redux-framework-demo'), 
-			'subtitle' => __('', 'redux-framework-demo'),
-			'desc' => __('', 'redux-framework-demo'),
+			'desc' => __('Please enter a comma seperated list of meta keywords you would like to use accross all pages', 'redux-framework-demo'),
+			'default' => 'krank, theme, wordpress',
+			'class' => 'large-text'
 		),
 		// Google+
 		array(
@@ -192,7 +182,7 @@ $this->sections[] = array(
 			'title' => __('Google Plus Author Profile', 'redux-framework-demo'),
 			'subtitle' => __('', 'redux-framework-demo'),
 			'desc' => __('Enter the URL of your Google+ profile page. This will add a link to your search listings', 'redux-framework-demo'),
-			'default' => '',
+			'default' => 'http://www.google.com/+/',
 			'class' => 'small-text',
 			'validate' => 'url'
 		),
@@ -202,7 +192,7 @@ $this->sections[] = array(
 			'type' => 'switch', 
 			'title' => __('XML Sitemap Generator', 'redux-framework-demo'),
 			'subtitle'=> __('Produces sitemap.xml file in the sites root directory for submission to search engines.', 'redux-framework-demo'),
-			"default" => 0,
+			"default" => 1,
 			'on' => 'Enabled',
 			'off' => 'Disabled',
 		),
@@ -268,7 +258,7 @@ $this->sections[] = array(
 			'title' => __('Google Analytics Tracking Code (Universal Analytics Only)', 'redux-framework-demo'),
 			'subtitle' => __('Should look something like UA-XXXXXXXX-X', 'redux-framework-demo'),
 			'desc' => __('', 'redux-framework-demo'),
-			'default' => '',
+			'default' => 'UA-XXXXXXXX-X',
 			'class' => 'small-text',
 		),
 	)
@@ -284,7 +274,7 @@ $this->sections[] = array(
 			'type' => 'switch', 
 			'title' => __('Enable / Disable Home Page Carousel', 'redux-framework-demo'),
 			'subtitle'=> __('', 'redux-framework-demo'),
-			"default" => 1,
+			"default" => 0,
 			'on' => 'Enabled',
 			'off' => 'Disabled',
 		),
@@ -326,15 +316,14 @@ $this->sections[] = array(
 	)
 );
 
-
 $this->sections[] = array(
 	'type' => 'divide',
 );
 
-// /**
-// 	Sample Options Below
-// **/
-// 
+/**
+	Sample Options Below
+**/
+
 // $this->sections[] = array(
 // 	'title' => __('Home Settings', 'redux-framework-demo'),
 // 	'desc' => __('Redux Framework was created with the developer in mind. It allows for any theme developer to have an advanced theme panel with most of the features a developer would need. For more information check out the Github repo at: <a href="https://github.com/ReduxFramework/Redux-Framework">https://github.com/ReduxFramework/Redux-Framework</a>', 'redux-framework-demo'),

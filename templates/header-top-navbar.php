@@ -8,10 +8,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-	  <?php 
-	  	if($krank['logo']['url']) {
-	  		$background = 'background: url(\''.$krank['logo']['url'].'\') no-repeat;';
-	  	}
+	  <?php
+			$background = '';
+			if (!empty($krank['logo']['url'])) {
+				$background = 'background: url(\''.$krank['logo']['url'].'\') no-repeat;';
+			}
 	  ?>
 	  <a class="navbar-brand" href="<?php echo home_url(); ?>/" title="<?php bloginfo('name'); ?>" style="<?php echo $background; ?>">
 		  <span class="name"><?php bloginfo('name'); ?></span>

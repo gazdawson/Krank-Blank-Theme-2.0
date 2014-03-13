@@ -102,13 +102,13 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 
 		function dynamic_section($sections){
 		    //$sections = array();
-		    $sections[] = array(
-		        'title' => __('Section via hook', 'redux-framework-demo'),
-		        'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
-				'icon' => 'el-icon-paper-clip',
-				    // Leave this as a blank section, no options just some intro text set above.
-		        'fields' => array()
-		    );
+				// 		    $sections[] = array(
+				// 		        'title' => __('Section via hook', 'redux-framework-demo'),
+				// 		        'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
+				// 'icon' => 'el-icon-paper-clip',
+				//     // Leave this as a blank section, no options just some intro text set above.
+				// 		        'fields' => array()
+				// 		    );
 
 		    return $sections;
 		}
@@ -299,7 +299,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 	            'page'		 	 		=> __( 'Krank Options', 'redux-framework-demo' ),
 	            'google_api_key'   	 	=> '', // Must be defined to add google fonts to the typography module
 	            'global_variable'    	=> '', // Set a different name for your global variable other than the opt_name
-	            'dev_mode'           	=> true, // Show the time the page took to load, etc
+	            'dev_mode'           	=> false, // Show the time the page took to load, etc
 	            'customizer'         	=> false, // Enable basic customizer support
 
 	            // OPTIONAL -> Give you extra features
@@ -318,7 +318,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 	            // CAREFUL -> These options are for advanced use only
 	            'transient_time' 	 	=> 60 * MINUTE_IN_SECONDS,
 	            'output'            	=> false, // Global shut-off for dynamic CSS output by the framework. Will also disable google fonts output
-	            'output_tag'            	=> true, // Allows dynamic CSS to be generated for customizer and google fonts, but stops the dynamic CSS from going to the head
+	            'output_tag'            	=> false, // Allows dynamic CSS to be generated for customizer and google fonts, but stops the dynamic CSS from going to the head
 	            //'domain'             	=> 'redux-framework', // Translation domain key. Don't change this unless you want to retranslate all of Redux.
 	            //'footer_credit'      	=> '', // Disable the footer credit of Redux. Please leave if you can help it.
 	            
@@ -339,7 +339,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 			$this->args['share_icons'][] = array(
 			    'url' => 'http://www.linkedin.com/pub/gareth-dawson/19/593/627',
 			    'title' => 'Follow Krank Creative on LinkedIn', 
-			    'icon' => 'el-icon-linkedin'
+			    'icon' => 'el-icon-linkedin',
 			);
 			
 	 
