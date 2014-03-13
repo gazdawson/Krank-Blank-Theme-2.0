@@ -102,13 +102,13 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 
 		function dynamic_section($sections){
 		    //$sections = array();
-		    $sections[] = array(
-		        'title' => __('Section via hook', 'redux-framework-demo'),
-		        'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
-				'icon' => 'el-icon-paper-clip',
-				    // Leave this as a blank section, no options just some intro text set above.
-		        'fields' => array()
-		    );
+				// 		    $sections[] = array(
+				// 		        'title' => __('Section via hook', 'redux-framework-demo'),
+				// 		        'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
+				// 'icon' => 'el-icon-paper-clip',
+				//     // Leave this as a blank section, no options just some intro text set above.
+				// 		        'fields' => array()
+				// 		    );
 
 		    return $sections;
 		}
@@ -299,7 +299,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 	            'page'		 	 		=> __( 'Krank Options', 'redux-framework-demo' ),
 	            'google_api_key'   	 	=> '', // Must be defined to add google fonts to the typography module
 	            'global_variable'    	=> '', // Set a different name for your global variable other than the opt_name
-	            'dev_mode'           	=> true, // Show the time the page took to load, etc
+	            'dev_mode'           	=> false, // Show the time the page took to load, etc
 	            'customizer'         	=> false, // Enable basic customizer support
 
 	            // OPTIONAL -> Give you extra features
@@ -339,7 +339,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 			$this->args['share_icons'][] = array(
 			    'url' => 'http://www.linkedin.com/pub/gareth-dawson/19/593/627',
 			    'title' => 'Follow Krank Creative on LinkedIn', 
-			    'icon' => 'el-icon-linkedin'
+			    'icon' => 'el-icon-linkedin',
 			);
 			
 	 
