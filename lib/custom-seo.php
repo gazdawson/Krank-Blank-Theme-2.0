@@ -22,94 +22,29 @@ function krank_page_title() {
 	echo $title;
 }
 
-// Page Meta
-function krank_page_meta() {
-	global $post;
-	global $krank;
-
-	$meta = '<!-- Krank Search Engine Optimisation -->';
-	
-	// Custom seo meta
-	$meta_desc = get_post_meta($post->ID, '_krank_seo_desc', true);
-	$meta_key = get_post_meta($post->ID, '_krank_seo_key', true);
-	$google_plus = $krank['google_plus'];
-	
-	// If custom doesnt exist bodge from wordpress content
-	while (have_posts()) : the_post();;
-	  $page_content = get_the_content($post);
-	endwhile;
-	
-	// String Work on page excerpt
-	if ($page_content) {
-		$excerpt = strip_tags($page_content);
-		$meta_excerpt = substr($excerpt , 0, strpos($excerpt, '. ', 157));
-	}
-	
-	// Google + Author Link
-	if($google_plus) {
-		$meta .= '<link rel="author" href="'.$google_plus.'">';
-	}
-	
-	// Meta Description
-	if ($meta_desc) {
-		$meta .= '<meta name="description" content="'.$meta_desc.'">';
-	}
-	if (!$meta_desc) {
-		$meta .= '<meta name="description" content="'.$meta_excerpt.'">';
-	}
-	
-	// Meta keywords
-	if ($meta_key) {
-		$meta .= '<meta name="keywords" content="'.$meta_key.'">';
-	}
-	if (!$meta_key) {
-		$keyword_gen = krank_extract_keywords($excerpt);
-		$meta .= '<meta name="keywords" content="'.$keyword_gen.'">';
-	}
-	
-	// Remove on posts if no custom meta
-	// if (is_singular() && !$meta_key && !$meta_desc) {
-	// 	$meta = '';
-	// }
-	
-	echo $meta;
-}
-// Add new Krank meta to head
-add_action('wp_head', 'krank_page_meta');
-
 // Krank search Index 
 function krank_search_index() {
-	// Krank Options Variables
 	global $krank;
-	$search_index = $krank['search_index'];
-	$no_index = $krank['no_index'];
-	$cats = $no_index['cats'];
-	$date_arch = $no_index['date_arch'];
-	$auth_arch = $no_index['auth_arch'];
-	$tag_arch = $no_index['tag_arch'];
-	$search = $no_index['search'];
-	$pages_noindex = $krank['pages_no_index'];
-	$post_noindex = $krank['post_type_index'];
+	$krank_SEO = '<!-- Krank Search Engine Optimisation -->';
 	
-	// Output vars;
+	$cats = isset($krank['no_index']['cats']);
+	$date_arch = isset($krank['no_index']['date_arch']);
+	$auth_arch = isset($krank['no_index']['auth_arch']);
+	$tag_arch = isset($krank['no_index']['tag_arch']);
+	$search = isset($krank['no_index']['search']);
+	
+	// Output va rs;
 	$yes = '<meta name="robots" content="index,follow">';
 	$no = '<meta name="robots" content="noindex,follow">';
 	
 	// Check for averall index
-	if($search_index != 0) {
+	if($krank['search_index'] != 0) {
 		$output = $yes;
 	}
 	else {
 		$output = $no;
 	}
 	
-	// Check for specific pages and post types
-	if( $pages_noindex && is_page($pages_noindex) ) {
-		$output = $no;
-	}
-	if( $post_noindex && is_singular( $post_noindex ) ) {
-		$output = $no;
-	}
 	// check for specific page types
 	if( $cats == 1 && is_category() ) {
 		$output = $no;
@@ -127,63 +62,94 @@ function krank_search_index() {
 		$output = $no;
 	}
 	
-	echo $output;
+	echo $krank_SEO.$output;
 }
 // Remove WP Default Meta Robots
-remove_action('wp_head', 'noindex', 1);
+remove_action('wp_head', 'noindex');
 // Add Krank Meta Robots
 add_action('wp_head', 'krank_search_index');
+
+// Page Meta
+function krank_page_meta() {
+	global $post;
+	global $krank;
+	$meta = '';
+	
+	// Custom seo meta
+	$meta_desc = get_post_meta($post->ID, '_krank_seo_desc', true);
+	$meta_key = get_post_meta($post->ID, '_krank_seo_key', true);
+	$global_key = $krank['global_key'];
+	$google_plus = $krank['google_plus'];
+	
+	// Meta Description
+	if ($meta_desc) {
+		$meta .= '<meta name="description" content="'.$meta_desc.'">';
+	}
+	
+	// Meta keywords
+	if ($global_key || $meta_key) {
+		$meta .= '<meta name="keywords" content="'.$global_key.', '.$meta_key.'">';
+	}
+	
+	// Google + Author Link
+	if($google_plus) {
+		$meta .= '<link rel="author" href="'.$google_plus.'">';
+	}
+	
+	echo $meta;
+}
+// Add new Krank meta to head
+add_action('wp_head', 'krank_page_meta');
 
 // Breadcrumbs to pages
 function krank_breadcrumbs() {
 	global $krank;
 	$breadcrumb = $krank['breadcrumbs'];
 	
-    $output .= 
-		'<div class="breadcrumbs">
-			<div class="container">
-				<ul class="breadcrumb">';
-	// Master Page
-    $output .= '<li><a href="'.get_option('home').'" title="'.get_option('blogname').' | '.get_option('blogdescription').'">Home</a></li>';
-	// Categories and Single
-    if (is_category() || is_single()) {
-			$category = get_the_category();
-	    $cat_name = $category[0]->cat_name;
-			$cat_link = $category[0]->slug;
-		
-			$output .= '<li><a href="/category/'.$cat_link.'" title="View '.$cat_name.' Category">'.$cat_name.'</a></li>';
-		
-        if (is_single()) {
-            $output .= '<li>'.get_the_title().'</li>';
-        }
-    }
-		if (is_page()) {
-			$output .= '<li>'.get_the_title().'</li>';
-	  }
-    elseif (is_tag()) {
-			$tag = single_tag_title("", false);
-			$output .= '<li>'.$tag.'</li>';
-		}
-    elseif (is_day()) {
-			$output .= '<li>Archive for'.get_the_time('F jS, Y').'</li>';
-		}
-    elseif (is_month()) {
-			$output .= '<li>Archive for '.get_the_time('F, Y').'</li>';
-		}
-    elseif (is_year()) {
-			$output .= '<li>Archive for '.get_the_time('Y').'</li>';
-		}
-    elseif (is_author()) {
-			$output .= '<li>Author Archive</li>';
-		}
-    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-			$output .= '<li>Blog Archives</li>';
-		}
-    elseif (is_search()) {
-			$search = get_search_query();
-			$output .= '<li>Search Results For "'.$search.'"</li>';
-		}
-   		$output .= '</ul></div></div><!--/.breadcrumbs-->';
+	$output = '';
+  $output .= '<div class="breadcrumbs"><div class="container"><ul class="breadcrumb">';
+	
+// Master Page
+  $output .= '<li><a href="'.get_option('home').'" title="'.get_option('blogname').' | '.get_option('blogdescription').'">Home</a></li>';
+// Categories and Single
+  if (is_category() || is_single()) {
+		$category = get_the_category();
+    $cat_name = $category[0]->cat_name;
+		$cat_link = $category[0]->slug;
+	
+		$output .= '<li><a href="/category/'.$cat_link.'" title="View '.$cat_name.' Category">'.$cat_name.'</a></li>';
+	
+      if (is_single()) {
+          $output .= '<li>'.get_the_title().'</li>';
+      }
+  }
+	if (is_page()) {
+		$output .= '<li>'.get_the_title().'</li>';
+  }
+  elseif (is_tag()) {
+		$tag = single_tag_title("", false);
+		$output .= '<li>'.$tag.'</li>';
+	}
+  elseif (is_day()) {
+		$output .= '<li>Archive for'.get_the_time('F jS, Y').'</li>';
+	}
+  elseif (is_month()) {
+		$output .= '<li>Archive for '.get_the_time('F, Y').'</li>';
+	}
+  elseif (is_year()) {
+		$output .= '<li>Archive for '.get_the_time('Y').'</li>';
+	}
+  elseif (is_author()) {
+		$output .= '<li>Author Archive</li>';
+	}
+  elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+		$output .= '<li>Blog Archives</li>';
+	}
+  elseif (is_search()) {
+		$search = get_search_query();
+		$output .= '<li>Search Results For "'.$search.'"</li>';
+	}
+ 		$output .= '</ul></div></div><!--/.breadcrumbs-->';
    
    // echo the breadcrumb
    if (!is_front_page()){
@@ -230,34 +196,3 @@ function krank_build_sitemap() {
 }
 add_action("publish_post", "krank_build_sitemap");
 add_action("publish_page", "krank_build_sitemap");
-
-// Keyword generator
-function krank_extract_keywords($str, $minWordLen = 3, $minWordOccurrences = 3, $asArray = false) {
-	
-	function krank_keyword_count_sort($first, $sec) {
-		return $sec[1] - $first[1];
-	}
-	
-	$str = preg_replace('/[^\p{L}0-9 ]/', ' ', $str);
-	$str = trim(preg_replace('/\s+/', ' ', $str));
- 
-	$words = explode(' ', $str);
-	$keywords = array();
-	
-	while(($c_word = array_shift($words)) !== null) {
-		if(strlen($c_word) < $minWordLen) continue;
- 
-		$c_word = strtolower($c_word);
-		if(array_key_exists($c_word, $keywords)) $keywords[$c_word][1]++;
-		else $keywords[$c_word] = array($c_word, 1);
-	}
-	
-	usort($keywords, 'krank_keyword_count_sort');
- 
-	$final_keywords = array();
-	foreach($keywords as $keyword_det) {
-		if($keyword_det[1] < $minWordOccurrences) break;
-		array_push($final_keywords, $keyword_det[0]);
-	}
-	return $asArray ? $final_keywords : implode(', ', $final_keywords);
-}

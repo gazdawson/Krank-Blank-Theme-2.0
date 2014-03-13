@@ -7,6 +7,8 @@
 // Bootstrap Carousels
 function krank_carousel($slide_type, $id, $controls, $indicators, $captions, $trans) {
 	global $krank; // Global variable for custom options
+	$indicator = '';
+	$items = '';
 	
 	// Slide or fade
 	if($trans == 'fade'){
@@ -20,12 +22,12 @@ function krank_carousel($slide_type, $id, $controls, $indicators, $captions, $tr
 	$count = 0;
 	foreach($krank[$slide_type] as $slides) {
 		
-		$title 			= 	$slides['title'];
-		$description 	= 	$slides['description'];
-		$link 			= 	$slides['url'];
-		$images 		=	$slides['image'];
-		$images_height 	=	$slides['height'];
-		$images_width 	=	$slides['width'];
+		$title = $slides['title'];
+		$description = $slides['description'];
+		$link = $slides['url'];
+		$images	=	$slides['image'];
+		$images_height = $slides['height'];
+		$images_width =	$slides['width'];
 		
 		// .active class for first slide
 		if ($count === 0 ) {
@@ -97,6 +99,10 @@ function krank_carousel($slide_type, $id, $controls, $indicators, $captions, $tr
 // Structured Data Address
 function krank_structured_business() {
 	global $krank;
+	$address_lines = '';
+	$contact_lines = '';
+	$open_lines = '';
+	
 	// Business Name
 	if($krank['name']) {
 		$business_name = $krank['name'];
@@ -160,32 +166,42 @@ add_filter( 'excerpt_more', 'excerpt_read_more' );
 
 // Social Sharing Buttons
 function krank_social_share() {
+	global $post;
 	global $krank;
-	$social_btns = $krank['social_share'];
 	
-	foreach($social_btns as $key => $value) {
-		if ($key == 'googlePlus'){
-			$icon = 'google-plus';
-		}
-		else {
-			$icon = $key;
-		}
-		$social .= '<div id="'.$key.'" data-url="'.get_permalink($post->ID).'" data-text="Check out &quot;'.get_the_title().'&quot; on '.get_option('blogname').' | " data-title="Share"></div>';
-		$social_jquery .= '
-			$(\'#'.$key.'\').sharrre({
-			  share: {
-			    '.$key.': true
-			  },
-			  template: \'<i class="fa-'.$icon.' share"></i><span class="count" href="#">{total}</span>\',
-			  enableHover: true,
-			  enableTracking: true,
-			  urlCurl: \'\',
-			  click: function(api, options){
-			    api.simulateClick();
-			    api.openPopup(\''.$key.'\');
-			  }
-			});';
+	$social_btns = '';
+	$social = '';
+	$social_jquery = '';
+	
+	if (!empty($krank['social_share'])){
+		$social_btns = $krank['social_share'];
 	}
 	
+	if ($social_btns) {
+		foreach($social_btns as $key => $value) {
+			if ($key == 'googlePlus'){
+				$icon = 'google-plus';
+			}
+			else {
+				$icon = $key;
+			}
+			$social .= '<div id="'.$key.'" data-url="'.get_permalink($post->ID).'" data-text="Check out &quot;'.get_the_title().'&quot; on '.get_option('blogname').' | " data-title="Share"></div>';
+			$social_jquery .= '
+				$(\'#'.$key.'\').sharrre({
+				  share: {
+				    '.$key.': true
+				  },
+				  template: \'<i class="fa-'.$icon.' share"></i><span class="count" href="#">{total}</span>\',
+				  enableHover: true,
+				  enableTracking: true,
+				  urlCurl: \'\',
+				  click: function(api, options){
+				    api.simulateClick();
+				    api.openPopup(\''.$key.'\');
+				  }
+				});';
+		}
+	}
+
 	echo $social . '<script>'.$social_jquery.'</script>';
 }

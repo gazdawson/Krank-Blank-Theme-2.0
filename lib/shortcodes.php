@@ -13,6 +13,9 @@ add_shortcode('open-hours', 'krank_open_hours');
 function krank_address( $atts ) {
 	global $krank;
 	$krank_opt = $krank['address'];
+	$address_lines = '';
+	$address_title = '';
+	
 	// Extract title variable	
 	extract( shortcode_atts( array(
 	   'title' => '',
@@ -49,6 +52,9 @@ function krank_address( $atts ) {
 function krank_contact( $atts ) {
 	global $krank;
 	$krank_opt = $krank['contact'];
+	$contact_lines = '';
+	$contact_title = '';
+	
 	// Extract title variable	
 	extract( shortcode_atts( array(
 	   'title' => '',
@@ -89,6 +95,9 @@ function krank_contact( $atts ) {
 function krank_open_hours( $atts ) {
 	global $krank;
 	$krank_opt = $krank['open'];
+	$open_hours = '';
+	$open_title = '';
+	
 	// Extract title variable	
 	extract( shortcode_atts( array(
 	   'title' => '',
