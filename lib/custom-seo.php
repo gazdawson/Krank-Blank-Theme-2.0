@@ -68,9 +68,9 @@ function krank_page_meta() {
 	}
 	
 	// Remove on posts if no custom meta
-	if (is_singular() && !$meta_key && !$meta_desc) {
-		$meta = '';
-	}
+	// if (is_singular() && !$meta_key && !$meta_desc) {
+	// 	$meta = '';
+	// }
 	
 	echo $meta;
 }

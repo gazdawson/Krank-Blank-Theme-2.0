@@ -6839,6 +6839,9 @@ fieldset[disabled] .navbar .contactModal.active {
 .search-form .search-reveal {
   display: none;
 }
+.content {
+  background-color: #ffffff;
+}
 .main .page-header {
   margin: 0 0 30px 0;
 }
@@ -6866,7 +6869,6 @@ fieldset[disabled] .navbar .contactModal.active {
   text-align: center;
   display: table;
   padding: 0;
-  margin-top: 10%;
 }
 #photo-modal .modal-dialog .thumbnail {
   border-color: #ecf0f1;
@@ -6875,6 +6877,7 @@ fieldset[disabled] .navbar .contactModal.active {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  width: 100%;
   display: block;
   max-width: 100%;
   height: auto;
@@ -7293,13 +7296,13 @@ fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
   z-index: 1000;
   bottom: 60px;
   right: 60px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
   font-size: 20px;
-  line-height: 30px;
+  line-height: 40px;
   text-align: center;
   text-decoration: none;
   background-color: rgba(78, 87, 88, 0.8);
@@ -7317,9 +7320,10 @@ fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
   background-color: rgba(73, 201, 176, 0.8);
 }
 .content-info {
-  background: #fff;
-  border-top: 1px solid #ecf0f1;
   margin-top: 30px;
+}
+.content-info .footer {
+  background: #ffffff;
 }
 .content-info .business-info {
   color: #95a5a6;
@@ -7353,6 +7357,7 @@ fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
   display: inline-block;
 }
 .author {
+  background-color: #ffffff;
   padding: 15px;
   color: #bdc3c7;
   text-align: center;

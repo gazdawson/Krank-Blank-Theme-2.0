@@ -25,7 +25,6 @@
 
 // Components
 @import "bootstrap/component-animations.less";
-//@import "bootstrap/glyphicons.less"; // Removed for Font-Awesome
 @import "bootstrap/dropdowns.less";
 @import "bootstrap/button-groups.less";
 @import "bootstrap/input-groups.less";
@@ -229,7 +228,9 @@ i {
 //    Content
 // ========================================================================== 
 
-.content { }
+.content { 
+	background-color: @body-bg;
+}
 
 // ==========================================================================
 //    Primary Content
@@ -269,7 +270,6 @@ i {
 	text-align: center;
 	display: table;
 	padding: 0;
-	margin-top: 10%;
 	.thumbnail {
 		border-color: @gray-lighter;
 	}
@@ -277,6 +277,7 @@ i {
 		-webkit-border-radius: @border-radius-base;
 		-moz-border-radius: @border-radius-base;
 		border-radius: @border-radius-base;
+		width: 100%;
 		.img-responsive;
 	}
 	.close {
@@ -580,13 +581,13 @@ i {
 	z-index: 1000;
 	bottom: @pad-lg;
 	right: @pad-lg;
-	width: 30px;
-	height: 30px;
+	width: 40px;
+	height: 40px;
 	-webkit-border-radius: @border-radius-base;
 	-moz-border-radius: @border-radius-base;
 	border-radius: @border-radius-base;
 	font-size: 20px;
-	line-height: 30px;
+	line-height: 40px;
 	text-align: center;
 	text-decoration: none;
 	background-color: fade(@gray-darker, 80%);
@@ -598,10 +599,9 @@ i {
 }
 
 .content-info {
-	background: #fff;
-	border-top: 1px solid @clouds;
 	margin-top: @pad-md;
 	.footer {
+		background: @body-bg;
 	}
 	.business-info {
 		color: @gray;
@@ -640,6 +640,7 @@ i {
 }
 
 .author {
+	background-color: @body-bg;
 	padding: @pad-sm;
 	color: @gray-light;
 	text-align: center;

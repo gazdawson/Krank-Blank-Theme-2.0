@@ -3,10 +3,10 @@
  * Krank includes
  * On upgrade retain this file 
 */
-require_once locate_template('/lib/utils.php');          		// Utility functions
+require_once locate_template('/lib/utils.php');          			// Utility functions
 require_once locate_template('/lib/init.php');            		// Initial theme setup and constants
 require_once locate_template('/lib/wrapper.php');         		// Theme wrapper class
-require_once locate_template('/lib/sidebar.php');        		// Sidebar class
+require_once locate_template('/lib/sidebar.php');        			// Sidebar class
 require_once locate_template('/lib/config.php');          		// Configuration
 require_once locate_template('/lib/activation.php');      		// Theme activation
 require_once locate_template('/lib/titles.php');          		// Page titles
@@ -19,12 +19,14 @@ require_once locate_template('/lib/widgets.php');         		// Sidebars and widg
 require_once locate_template('/lib/scripts.php');         		// Scripts and stylesheets
 
 // Krank Extras
-require_once locate_template('/lib/custom-functions.php');      // Custom functions
+require_once locate_template('/lib/custom-functions.php');    // Custom functions
 require_once locate_template('/lib/custom-posts.php');    		// Custom Posts
 require_once locate_template('/lib/contact-form.php');    		// Contact Form
 require_once locate_template('/lib/shortcodes.php');      		// Added Shortcodes
 require_once locate_template('/lib/custom-seo.php');      		// Custom seo pack
-require_once locate_template('/lib/custom-integration.php');    // Custom system integrations
+require_once locate_template('/lib/custom-integration.php');  // Custom system integrations
+require_once locate_template('/lib/less/Autoloader.php');  		// Custom system integrations
+Less_Autoloader::register();
 
 // Custom Meta Boxes see https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
 if (is_admin()) { require_once locate_template('/lib/custom-meta.php'); }

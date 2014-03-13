@@ -70,7 +70,7 @@ var Krank = {
 		// Sticky Nav
     $('.navbar').affix({
       	offset: {
-        top: 70
+        top: 100
       	, bottom: function () {
           return (this.bottom = $('.footer').outerHeight(true))
         }
