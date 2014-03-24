@@ -205,3 +205,31 @@ function krank_social_share() {
 
 	echo $social . '<script>'.$social_jquery.'</script>';
 }
+
+// Social Media Links
+function krank_social() {
+	global $krank;
+	$company = $krank['name'];
+	$html = '';
+	
+	$social = array (
+		'facebook' 		=> 	$krank['facebook'],
+		'twitter' 		=> 	$krank['twitter'],
+		'pinterest' 	=> 	$krank['pinterest'],
+		'google-plus' => 	$krank['google-plus'],
+		'linkedin' 		=> 	$krank['linkedin']
+	);
+	
+	foreach($social as $network => $url):
+		if($url != ''){
+			$html .= '<li class="'.$network.'"><a href="'.$url.'" target="_blank" rel="nofollow" title="Follow '.$company.' on '.ucfirst($network).'"><i class="fa fa-'.$network.'"></i></a></li>';
+		}
+	endforeach;
+	
+	$output = 
+		'<ul class="social-icons">'.
+			$html.
+		'</ul>';
+	
+	return $output;
+}

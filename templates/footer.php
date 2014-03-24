@@ -3,6 +3,7 @@
   <div class="footer container">
 	<div class="row">
 	    <?php dynamic_sidebar('sidebar-footer'); ?>
+			<?php echo krank_social(); ?>
 	    <nav class="footer-nav">
 			<h4>Useful Links</h4>
 		      <?php

@@ -9,15 +9,13 @@ function roots_setup() {
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
     'primary_navigation' => __('Primary Navigation', 'roots'),
-  ));
-  register_nav_menus(array(
-    'footer_navigation' => __('Footer Navigation', 'roots'),
+		'footer_navigation' => __('Footer Navigation', 'roots'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
   add_theme_support('post-thumbnails');
   // set_post_thumbnail_size(150, 150, false);
-  add_image_size('post-thumb', 850, 300, false); // 300px wide (and unlimited height)
+  add_image_size('post-thumb', 850, 300, true); // 300px wide (and unlimited height)
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));

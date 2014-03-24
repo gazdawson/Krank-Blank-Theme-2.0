@@ -1,19 +1,21 @@
 <article <?php post_class(); ?>>
-	<?php if ( has_post_thumbnail() ) { ?>
-		<div class="feat-img">
-			<?php if(get_post_meta($post->ID, '_krank_feat_post', true)) { ?>
-				<div class="feat-post">
-					<i class="fa-star"></i> <span>Featured Post <i class="fa-star"></i></span>
-				</div>
-			<?php } // endif ?>
-			<a href="<?php the_permalink(); ?>" title="Read <?php the_title(); ?>">
+	<div class="feat-img">
+		<?php if(get_post_meta($post->ID, '_krank_feat_post', true)) { ?>
+			<div class="feat-post">
+				<i class="fa-star"></i> <span>Featured Post <i class="fa-star"></i></span>
+			</div>
+		<?php } // endif ?>
+		<a href="<?php the_permalink(); ?>" title="Read <?php the_title(); ?>">
+			<?php if ( get_the_post_thumbnail() != '' ): ?>
 				<?php the_post_thumbnail('post-thumb'); ?>
-				<span class="img-more">
-					<i class="fa-share"></i>
-				</span>
-			</a>
-		</div>
-	<?php } // endif ?>
+			<?php else: ?>
+				<span class="img-soon"><i class="fa-picture-o"></i> Image Coming Soon!</span>
+			<?php endif; ?>
+			<span class="img-more">
+				<i class="fa-share"></i>
+			</span>
+		</a>
+	</div>
   <header>
     <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
     <?php get_template_part('templates/entry-meta'); ?>

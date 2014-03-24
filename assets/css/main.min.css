@@ -6578,6 +6578,11 @@ button:hover,
 .btn:hover {
   text-decoration: none;
 }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 i {
   display: inline-block;
   font-family: FontAwesome;
@@ -6611,6 +6616,9 @@ i {
 }
 .navbar {
   margin-bottom: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 .navbar .navbar-header {
   position: relative;
@@ -6962,8 +6970,21 @@ fieldset[disabled] .navbar .contactModal.active {
 .hentry .feat-post span {
   line-height: 40px;
 }
+.hentry .img-soon {
+  display: block;
+  height: 100%;
+  background-color: #ecf0f1;
+  color: #bdc3c7;
+  text-align: center;
+  text-shadow: 0 1px #fff;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: 300;
+  line-height: 220px;
+}
 .blog .hentry,
-.search-results .hentry {
+.search-results .hentry,
+.category .hentry {
   padding-bottom: 30px;
   margin-bottom: 30px;
   border-bottom: 1px solid #ecf0f1;
@@ -6971,12 +6992,14 @@ fieldset[disabled] .navbar .contactModal.active {
   position: relative;
 }
 .blog .hentry .feat-img,
-.search-results .hentry .feat-img {
+.search-results .hentry .feat-img,
+.category .hentry .feat-img {
   position: relative;
   overflow: hidden;
 }
 .blog .hentry .feat-img .feat-post,
-.search-results .hentry .feat-img .feat-post {
+.search-results .hentry .feat-img .feat-post,
+.category .hentry .feat-img .feat-post {
   position: absolute;
   top: 50px;
   right: -38px;
@@ -6994,17 +7017,20 @@ fieldset[disabled] .navbar .contactModal.active {
   /* IE8 */
 }
 .blog .hentry .feat-img .feat-post span,
-.search-results .hentry .feat-img .feat-post span {
+.search-results .hentry .feat-img .feat-post span,
+.category .hentry .feat-img .feat-post span {
   line-height: 0;
 }
 .blog .hentry .feat-img img,
-.search-results .hentry .feat-img img {
+.search-results .hentry .feat-img img,
+.category .hentry .feat-img img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 .blog .hentry .feat-img .img-more,
-.search-results .hentry .feat-img .img-more {
+.search-results .hentry .feat-img .img-more,
+.category .hentry .feat-img .img-more {
   position: absolute;
   top: 0;
   width: 100%;
@@ -7015,12 +7041,14 @@ fieldset[disabled] .navbar .contactModal.active {
   background-color: rgba(73, 201, 176, 0.5);
 }
 .blog .hentry .feat-img .img-more i,
-.search-results .hentry .feat-img .img-more i {
+.search-results .hentry .feat-img .img-more i,
+.category .hentry .feat-img .img-more i {
   color: white;
   font-size: 60px;
 }
 .blog .hentry time,
-.search-results .hentry time {
+.search-results .hentry time,
+.category .hentry time {
   position: absolute;
   left: 0;
   top: 0;
@@ -7034,16 +7062,19 @@ fieldset[disabled] .navbar .contactModal.active {
   border-bottom: 1px solid #ecf0f1;
 }
 .blog .hentry time span,
-.search-results .hentry time span {
+.search-results .hentry time span,
+.category .hentry time span {
   display: block;
   line-height: 24px;
 }
 .blog .hentry time .day,
-.search-results .hentry time .day {
+.search-results .hentry time .day,
+.category .hentry time .day {
   font-size: 200%;
 }
 .blog .hentry .entry-summary .read-more,
-.search-results .hentry .entry-summary .read-more {
+.search-results .hentry .entry-summary .read-more,
+.category .hentry .entry-summary .read-more {
   color: #ffffff;
   background-color: #49c9b0;
   border-color: #39c0a5;
@@ -7058,126 +7089,175 @@ fieldset[disabled] .navbar .contactModal.active {
 }
 .blog .hentry .entry-summary .read-more:hover,
 .search-results .hentry .entry-summary .read-more:hover,
+.category .hentry .entry-summary .read-more:hover,
 .blog .hentry .entry-summary .read-more:focus,
 .search-results .hentry .entry-summary .read-more:focus,
+.category .hentry .entry-summary .read-more:focus,
 .blog .hentry .entry-summary .read-more:active,
 .search-results .hentry .entry-summary .read-more:active,
+.category .hentry .entry-summary .read-more:active,
 .blog .hentry .entry-summary .read-more.active,
 .search-results .hentry .entry-summary .read-more.active,
+.category .hentry .entry-summary .read-more.active,
 .open .dropdown-toggle.blog .hentry .entry-summary .read-more,
-.open .dropdown-toggle.search-results .hentry .entry-summary .read-more {
+.open .dropdown-toggle.search-results .hentry .entry-summary .read-more,
+.open .dropdown-toggle.category .hentry .entry-summary .read-more {
   color: #ffffff;
   background-color: #35b49b;
   border-color: #2b907d;
 }
 .blog .hentry .entry-summary .read-more:active,
 .search-results .hentry .entry-summary .read-more:active,
+.category .hentry .entry-summary .read-more:active,
 .blog .hentry .entry-summary .read-more.active,
 .search-results .hentry .entry-summary .read-more.active,
+.category .hentry .entry-summary .read-more.active,
 .open .dropdown-toggle.blog .hentry .entry-summary .read-more,
-.open .dropdown-toggle.search-results .hentry .entry-summary .read-more {
+.open .dropdown-toggle.search-results .hentry .entry-summary .read-more,
+.open .dropdown-toggle.category .hentry .entry-summary .read-more {
   background-image: none;
 }
 .blog .hentry .entry-summary .read-more.disabled,
 .search-results .hentry .entry-summary .read-more.disabled,
+.category .hentry .entry-summary .read-more.disabled,
 .blog .hentry .entry-summary .read-more[disabled],
 .search-results .hentry .entry-summary .read-more[disabled],
+.category .hentry .entry-summary .read-more[disabled],
 fieldset[disabled] .blog .hentry .entry-summary .read-more,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more,
+fieldset[disabled] .category .hentry .entry-summary .read-more,
 .blog .hentry .entry-summary .read-more.disabled:hover,
 .search-results .hentry .entry-summary .read-more.disabled:hover,
+.category .hentry .entry-summary .read-more.disabled:hover,
 .blog .hentry .entry-summary .read-more[disabled]:hover,
 .search-results .hentry .entry-summary .read-more[disabled]:hover,
+.category .hentry .entry-summary .read-more[disabled]:hover,
 fieldset[disabled] .blog .hentry .entry-summary .read-more:hover,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more:hover,
+fieldset[disabled] .category .hentry .entry-summary .read-more:hover,
 .blog .hentry .entry-summary .read-more.disabled:focus,
 .search-results .hentry .entry-summary .read-more.disabled:focus,
+.category .hentry .entry-summary .read-more.disabled:focus,
 .blog .hentry .entry-summary .read-more[disabled]:focus,
 .search-results .hentry .entry-summary .read-more[disabled]:focus,
+.category .hentry .entry-summary .read-more[disabled]:focus,
 fieldset[disabled] .blog .hentry .entry-summary .read-more:focus,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more:focus,
+fieldset[disabled] .category .hentry .entry-summary .read-more:focus,
 .blog .hentry .entry-summary .read-more.disabled:active,
 .search-results .hentry .entry-summary .read-more.disabled:active,
+.category .hentry .entry-summary .read-more.disabled:active,
 .blog .hentry .entry-summary .read-more[disabled]:active,
 .search-results .hentry .entry-summary .read-more[disabled]:active,
+.category .hentry .entry-summary .read-more[disabled]:active,
 fieldset[disabled] .blog .hentry .entry-summary .read-more:active,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more:active,
+fieldset[disabled] .category .hentry .entry-summary .read-more:active,
 .blog .hentry .entry-summary .read-more.disabled.active,
 .search-results .hentry .entry-summary .read-more.disabled.active,
+.category .hentry .entry-summary .read-more.disabled.active,
 .blog .hentry .entry-summary .read-more[disabled].active,
 .search-results .hentry .entry-summary .read-more[disabled].active,
+.category .hentry .entry-summary .read-more[disabled].active,
 fieldset[disabled] .blog .hentry .entry-summary .read-more.active,
-fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
+fieldset[disabled] .search-results .hentry .entry-summary .read-more.active,
+fieldset[disabled] .category .hentry .entry-summary .read-more.active {
   background-color: #49c9b0;
   border-color: #39c0a5;
 }
 .blog .hentry .entry-summary .read-more .badge,
-.search-results .hentry .entry-summary .read-more .badge {
+.search-results .hentry .entry-summary .read-more .badge,
+.category .hentry .entry-summary .read-more .badge {
   color: #49c9b0;
   background-color: #ffffff;
 }
 .blog .hentry .entry-summary .read-more:hover,
 .search-results .hentry .entry-summary .read-more:hover,
+.category .hentry .entry-summary .read-more:hover,
 .blog .hentry .entry-summary .read-more:focus,
 .search-results .hentry .entry-summary .read-more:focus,
+.category .hentry .entry-summary .read-more:focus,
 .blog .hentry .entry-summary .read-more:active,
 .search-results .hentry .entry-summary .read-more:active,
+.category .hentry .entry-summary .read-more:active,
 .blog .hentry .entry-summary .read-more.active,
 .search-results .hentry .entry-summary .read-more.active,
+.category .hentry .entry-summary .read-more.active,
 .open .dropdown-toggle.blog .hentry .entry-summary .read-more,
-.open .dropdown-toggle.search-results .hentry .entry-summary .read-more {
+.open .dropdown-toggle.search-results .hentry .entry-summary .read-more,
+.open .dropdown-toggle.category .hentry .entry-summary .read-more {
   color: #7f8c8d;
   background-color: rgba(0, 0, 0, 0);
   border-color: #616d6d;
 }
 .blog .hentry .entry-summary .read-more:active,
 .search-results .hentry .entry-summary .read-more:active,
+.category .hentry .entry-summary .read-more:active,
 .blog .hentry .entry-summary .read-more.active,
 .search-results .hentry .entry-summary .read-more.active,
+.category .hentry .entry-summary .read-more.active,
 .open .dropdown-toggle.blog .hentry .entry-summary .read-more,
-.open .dropdown-toggle.search-results .hentry .entry-summary .read-more {
+.open .dropdown-toggle.search-results .hentry .entry-summary .read-more,
+.open .dropdown-toggle.category .hentry .entry-summary .read-more {
   background-image: none;
 }
 .blog .hentry .entry-summary .read-more.disabled,
 .search-results .hentry .entry-summary .read-more.disabled,
+.category .hentry .entry-summary .read-more.disabled,
 .blog .hentry .entry-summary .read-more[disabled],
 .search-results .hentry .entry-summary .read-more[disabled],
+.category .hentry .entry-summary .read-more[disabled],
 fieldset[disabled] .blog .hentry .entry-summary .read-more,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more,
+fieldset[disabled] .category .hentry .entry-summary .read-more,
 .blog .hentry .entry-summary .read-more.disabled:hover,
 .search-results .hentry .entry-summary .read-more.disabled:hover,
+.category .hentry .entry-summary .read-more.disabled:hover,
 .blog .hentry .entry-summary .read-more[disabled]:hover,
 .search-results .hentry .entry-summary .read-more[disabled]:hover,
+.category .hentry .entry-summary .read-more[disabled]:hover,
 fieldset[disabled] .blog .hentry .entry-summary .read-more:hover,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more:hover,
+fieldset[disabled] .category .hentry .entry-summary .read-more:hover,
 .blog .hentry .entry-summary .read-more.disabled:focus,
 .search-results .hentry .entry-summary .read-more.disabled:focus,
+.category .hentry .entry-summary .read-more.disabled:focus,
 .blog .hentry .entry-summary .read-more[disabled]:focus,
 .search-results .hentry .entry-summary .read-more[disabled]:focus,
+.category .hentry .entry-summary .read-more[disabled]:focus,
 fieldset[disabled] .blog .hentry .entry-summary .read-more:focus,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more:focus,
+fieldset[disabled] .category .hentry .entry-summary .read-more:focus,
 .blog .hentry .entry-summary .read-more.disabled:active,
 .search-results .hentry .entry-summary .read-more.disabled:active,
+.category .hentry .entry-summary .read-more.disabled:active,
 .blog .hentry .entry-summary .read-more[disabled]:active,
 .search-results .hentry .entry-summary .read-more[disabled]:active,
+.category .hentry .entry-summary .read-more[disabled]:active,
 fieldset[disabled] .blog .hentry .entry-summary .read-more:active,
 fieldset[disabled] .search-results .hentry .entry-summary .read-more:active,
+fieldset[disabled] .category .hentry .entry-summary .read-more:active,
 .blog .hentry .entry-summary .read-more.disabled.active,
 .search-results .hentry .entry-summary .read-more.disabled.active,
+.category .hentry .entry-summary .read-more.disabled.active,
 .blog .hentry .entry-summary .read-more[disabled].active,
 .search-results .hentry .entry-summary .read-more[disabled].active,
+.category .hentry .entry-summary .read-more[disabled].active,
 fieldset[disabled] .blog .hentry .entry-summary .read-more.active,
-fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
+fieldset[disabled] .search-results .hentry .entry-summary .read-more.active,
+fieldset[disabled] .category .hentry .entry-summary .read-more.active {
   background-color: transparent;
   border-color: #7f8c8d;
 }
 .blog .hentry .entry-summary .read-more .badge,
-.search-results .hentry .entry-summary .read-more .badge {
+.search-results .hentry .entry-summary .read-more .badge,
+.category .hentry .entry-summary .read-more .badge {
   color: transparent;
   background-color: #7f8c8d;
 }
 .blog .hentry .entry-summary .read-more:hover,
-.search-results .hentry .entry-summary .read-more:hover {
+.search-results .hentry .entry-summary .read-more:hover,
+.category .hentry .entry-summary .read-more:hover {
   border-color: #49c9b0;
   color: #49c9b0;
 }
@@ -7240,6 +7320,9 @@ fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
 }
 .social-share #linkedin:hover {
   color: #007bb6;
+}
+.single .hentry .entry-content img {
+  margin: 15px;
 }
 #comments .comment-content {
   position: relative;
@@ -7355,6 +7438,23 @@ fieldset[disabled] .search-results .hentry .entry-summary .read-more.active {
 }
 .content-info .footer-nav ul li {
   display: inline-block;
+}
+.content-info .widget {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .content-info .widget {
+    float: left;
+    width: 25%;
+  }
+}
+.content-info .widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .author {
   background-color: #ffffff;
@@ -7553,6 +7653,15 @@ select[multiple].contact-form .contact-fields textarea {
 }
 .short-open dl.open-hours:after:after {
   clear: both;
+}
+.social-icons {
+  list-style: none;
+  padding: 0 15px;
+}
+.social-icons li {
+  display: inline-block;
+  font-size: 24px;
+  margin-right: 7.5px;
 }
 .carousel {
   margin: 30px 0;
@@ -7854,4 +7963,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-primary:hover {
   border-color: #49c9b0;
   color: #49c9b0;
+}
+/* Gallery Shortcode */
+.gallery-row {
+  padding: 15px 0;
 }
