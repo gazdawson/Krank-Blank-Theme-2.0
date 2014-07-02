@@ -1,6 +1,6 @@
 <div class="entry-meta">
 	<span class="meta-author">
-		Written by: <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" class="author"><?php echo get_the_author(); ?></a> | 
+		Written by: <?php the_author_posts_link(); ?> | 
 	</span>
 	<time class="published" datetime="<?php echo get_the_time('c'); ?>">
 		<?php if(is_single()) { ?>

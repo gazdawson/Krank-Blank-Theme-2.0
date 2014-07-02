@@ -651,6 +651,9 @@ i {
 			height: 0;
 		}
 	}
+	.structured-data {
+		margin-top: @pad-lg;
+	}
 	.location {
 		display: none;
 	}
@@ -679,9 +682,27 @@ i {
 	}
 }
 
-.author {
-	color: @text-color;
+.author { 
+	.author-bio {
+		.make-row();
+		border-bottom: 1px solid @gray-lighter;
+		padding-bottom: @pad-md;
+		margin-bottom: @pad-md;
+		.author-avatar {
+			.make-sm-column(2);
+			img {
+				.img-circle;
+			}
+		}
+		.author-meta {
+			.make-sm-column(10);
+			h1 {
+				margin: 0;
+			}
+		}
+	}
 }
+
 // ==========================================================================
 //    Pages
 // ========================================================================== 

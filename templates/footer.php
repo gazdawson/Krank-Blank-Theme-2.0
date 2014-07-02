@@ -12,7 +12,7 @@
 		        endif;
 		      ?>
 	    </nav>
-		<div class="strutured-data">
+		<div class="structured-data">
 			<?php echo krank_structured_business();?>
 		</div>
 	</div>
