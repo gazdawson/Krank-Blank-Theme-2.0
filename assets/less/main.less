@@ -532,14 +532,35 @@ i {
 		color: #007bb6;
 	}
 }
-// single post media
-.single {
-	.hentry {
-		.entry-content {
-			img {
-				margin: @pad-sm;
-			}
-		}
+
+// ==========================================================================
+//    Images
+// ========================================================================== 
+
+.aligncenter {
+	display: block;
+	margin: @pad-sm auto;
+	text-align: center;
+}
+.alignleft {
+	float: left;
+	margin-right: @pad-sm;
+	margin-bottom: @pad-sm;
+}
+.alignright {
+	float: right;
+	margin-left: @pad-sm;
+	margin-bottom: @pad-sm;
+}
+.alignnone { 
+	display: block;
+	margin-left: 0; 
+	margin-right: 0; 
+}
+figure {
+	clear: both;
+	img {
+		margin: 0;
 	}
 }
 
@@ -999,16 +1020,6 @@ i {
 #home-carousel {
 	margin-top: 0;
 }
-
-// ==========================================================================
-//    WordPress Generated Classes
-//    See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
-// ========================================================================== 
-
-.aligncenter { display: block; margin: 0 auto; }
-.alignleft { float: left; }
-.alignright { float: right; }
-figure.alignnone { margin-left: 0; margin-right: 0; }
 
 // ==========================================================================
 //    Media Queries
