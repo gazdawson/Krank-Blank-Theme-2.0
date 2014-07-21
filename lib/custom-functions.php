@@ -233,3 +233,10 @@ function krank_social() {
 	
 	return $output;
 }
+
+add_filter( 'embed_defaults', 'change_embed_size' );
+
+function change_embed_size() {
+    // Adjust values
+    return array('width' => 100, 'height' => 100);
+}
