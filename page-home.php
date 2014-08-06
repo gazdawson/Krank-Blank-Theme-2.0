@@ -10,4 +10,7 @@
 		krank_carousel('home_slides', 'home-carousel', true, true, true, 'slide'); 
 	}
 ?>
-<?php get_template_part('templates/content', 'page'); ?>
+<div class="container">
+	<?php get_template_part('templates/content', 'page'); ?>
+</div>
+

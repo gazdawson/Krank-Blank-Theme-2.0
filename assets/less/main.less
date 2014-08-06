@@ -624,6 +624,31 @@ figure {
 }
 
 // ==========================================================================
+//    Authors
+// ========================================================================== 
+
+.author { 
+	.author-bio {
+		.make-row();
+		border-bottom: 1px solid @gray-lighter;
+		padding-bottom: @pad-md;
+		margin-bottom: @pad-md;
+		.author-avatar {
+			.make-sm-column(2);
+			img { 
+				.img-circle;
+			}
+		}
+		.author-meta {
+			.make-sm-column(10);
+			h1 {
+				margin: 0;
+			}
+		}
+	}
+}
+
+// ==========================================================================
 //    Footer
 // ========================================================================== 
 
@@ -713,27 +738,6 @@ figure {
 		
 		&:hover {
 			color: @brand-primary;
-		}
-	}
-}
-
-.author { 
-	.author-bio {
-		.make-row();
-		border-bottom: 1px solid @gray-lighter;
-		padding-bottom: @pad-md;
-		margin-bottom: @pad-md;
-		.author-avatar {
-			.make-sm-column(2);
-			img {
-				.img-circle;
-			}
-		}
-		.author-meta {
-			.make-sm-column(10);
-			h1 {
-				margin: 0;
-			}
 		}
 	}
 }
